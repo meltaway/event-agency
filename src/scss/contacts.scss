@@ -1,0 +1,15 @@
+@import "variables";
+@import "mixins";
+
+#contacts {
+  position: relative;
+  left: -100px;
+  background: $color-red-primary;
+  color: $color-white;
+  width: 30%;
+  height: 30%;
+}
+
+.copyright {
+  color: $color-white;
+}

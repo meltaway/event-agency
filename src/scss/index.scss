@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import "variables";
+@import "mixins";
+@import "menu";
+@import "contacts";
+
+body {
+  margin: 0;
+  font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+section {
+  @include flex-align-centered;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+  color: $color-brown-accent;
+  border-bottom: $color-grey-support 2px solid;
+  padding: {
+    top: 1.5em;
+    bottom: 1.5em;
+  };
+  margin: {
+    top: 1em;
+    bottom: 1em;
+  }
+  width: 37%;
+}
+
+h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  color: $color-grey-support;
+  margin: {
+    top: 1em;
+    bottom: 1em;
+  }
+  width: 35%;
+}
+
+p {
+  width: 60%;
+  text-align: center;
+  line-height: 1.8;
+  margin: {
+    top: .7em;
+    bottom: .7em;
+  };
+}
+
+footer {
+  height: 50em;
+  background: lighten($color-black-accent, 10%);
+}

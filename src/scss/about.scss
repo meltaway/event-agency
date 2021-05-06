@@ -1,0 +1,9 @@
+@import "variables";
+@import "mixins";
+
+#about {
+  p {
+    color: $color-black-accent;
+  }
+}
+
