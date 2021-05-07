@@ -36,17 +36,54 @@ nav {
   text-decoration: none;
 }
 
+contacts-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 #contacts {
   position: relative;
-  left: -100px;
+  left: 10em;
+  top: -5em;
   background: #a82548;
   color: #fff;
-  width: 30%;
-  height: 30%;
+  width: 35em;
+  height: 25em;
+  padding: 3em;
 }
 
 .copyright {
   color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10em;
+  margin-right: 10em;
+}
+.copyright p {
+  width: fit-content;
+}
+
+.contact-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 2em;
+}
+.contact-logo a {
+  color: #fff;
+  text-decoration: none;
+  width: fit-content;
+  font-size: 3em;
+}
+.contact-logo a p {
+  margin: 0;
+}
+.contact-logo .logo {
+  width: 100px;
+  height: 100px;
+}
+.contact-info p {
+  width: fit-content;
 }
 
 body {
@@ -95,7 +132,7 @@ p {
 }
 
 footer {
-  height: 50em;
+  height: 30em;
   background: #1b2846;
 }
 

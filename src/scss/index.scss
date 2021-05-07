@@ -10,6 +10,7 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 section {
@@ -57,6 +58,6 @@ p {
 }
 
 footer {
-  height: 50em;
+  height: 30em;
   background: lighten($color-black-accent, 10%);
 }

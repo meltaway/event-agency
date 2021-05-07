@@ -13,7 +13,6 @@ export const NavBar = () => {
                 <a href="#about">Who We Are</a>
                 <a href="#events">What We Do</a>
                 <a href="#booking">Booking</a>
-                <a href="#certifications">Certifications</a>
                 <a href="#contacts">Contacts</a>
             </div>
         </nav>

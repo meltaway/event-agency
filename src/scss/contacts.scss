@@ -1,15 +1,72 @@
 @import "variables";
 @import "mixins";
 
+contacts-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 #contacts {
   position: relative;
-  left: -100px;
+  left: 10em;
+  top: -5em;
   background: $color-red-primary;
   color: $color-white;
-  width: 30%;
-  height: 30%;
+  width: 35em;
+  height: 25em;
+  padding: 3em;
 }
 
 .copyright {
   color: $color-white;
+  display: flex;
+  justify-content: space-between;
+
+  margin: {
+    left: 10em;
+    right: 10em;
+  }
+
+  p {
+    width: fit-content;
+  }
+}
+
+.contact {
+  &-logo {
+    @include flex-align-centered;
+    justify-content: flex-start;
+    margin: {
+      bottom: 2em;
+    }
+
+    a {
+      color: $color-white;
+      text-decoration: none;
+      width: fit-content;
+      font-size: 3em;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &-info {
+    p {
+      width: fit-content;
+    }
+  }
+}
+
+.quick-links {
+  iframe {
+    //float: right;
+  }
+
 }
