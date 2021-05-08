@@ -36,28 +36,27 @@ nav {
   text-decoration: none;
 }
 
-contacts-container {
+.contacts-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  padding-top: 1%;
 }
 
 #contacts {
   position: relative;
-  left: 10em;
+  left: 10%;
   top: -5em;
   background: #a82548;
-  color: #fff;
-  width: 35em;
-  height: 25em;
-  padding: 3em;
+  width: 30%;
+  height: 20%;
+  padding: 2.7%;
 }
 
 .copyright {
-  color: #fff;
   display: flex;
   justify-content: space-between;
-  margin-left: 10em;
-  margin-right: 10em;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .copyright p {
   width: fit-content;
@@ -67,7 +66,7 @@ contacts-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 2em;
+  margin-bottom: 7%;
 }
 .contact-logo a {
   color: #fff;
@@ -79,11 +78,37 @@ contacts-container {
   margin: 0;
 }
 .contact-logo .logo {
-  width: 100px;
-  height: 100px;
+  width: 25%;
+  height: 25%;
 }
 .contact-info p {
   width: fit-content;
+}
+
+.map {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+}
+.map p {
+  width: fit-content;
+}
+
+.quick-links {
+  display: flex;
+  align-items: flex-start;
+  width: fit-content;
+  margin-left: 13%;
+  margin-top: 1%;
+}
+.quick-links a {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+.quick-links a:hover {
+  color: #a82548;
 }
 
 body {
@@ -134,6 +159,7 @@ p {
 footer {
   height: 30em;
   background: #1b2846;
+  color: #fff;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,10 +1,19 @@
 import React from 'react';
+// components
 import {NavBar} from './components/NavBar';
 // import EventCard from './components/EventCard';
+
+// fontawesome
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {fas} from "@fortawesome/free-solid-svg-icons";
+import {fab} from "@fortawesome/free-brands-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
 import * as Realm from "realm-web";
 
 const REALM_APP_ID = "event-agency-qebwj";
 const realmApp: Realm.App = new Realm.App({ id: REALM_APP_ID });
+library.add(fas, fab)
 
 function App() {
   return (
@@ -44,11 +53,17 @@ function App() {
                         <p>M: mail@eventify.world</p>
                     </div>
                 </div>
-                <div className="quick-links">
+                <div className="map">
+                    <p>Find us here:</p>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1270.2703579710123!2d30.46094!3d50.449655!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce82b9d930e5%3A0x8b1e1e0c5175e2f!2z0JrQn9CGINGW0LwuINC60L7RgNC_0YPRgSDihJYx!5e0!3m2!1sru!2sua!4v1620398191470!5m2!1sru!2sua"
                         width="400" height="300" style={{border: 0,}} allowFullScreen={false} loading="lazy">
                     </iframe>
+                </div>
+                <div className="quick-links">
+                    <a target="_blank" rel="noreferrer" href="https://twitter.com/compose/tweet"><FontAwesomeIcon icon={['fab', 'twitter']} size="3x"/></a>
+                    <a target="_blank" rel="noreferrer" href="https://www.facebook.com/"><FontAwesomeIcon icon={['fab', 'facebook']} size="3x"/></a>
+                    <a target="_blank" rel="noreferrer" href="https://www.instagram.com/"><FontAwesomeIcon icon={['fab', 'instagram']} size="3x"/></a>
                 </div>
             </div>
             <div className="copyright">
