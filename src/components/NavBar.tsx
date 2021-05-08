@@ -1,11 +1,11 @@
 import React from 'react'
 import './../scss/menu.scss'
 
-export const NavBar = () => {
+const NavBar = () => {
     return (
         <nav>
             <div className="title">
-                <img src="https://img.icons8.com/dusk/64/000000/christmas-star.png" alt={"Eventify"} className="logo"/>
+                <img src="/images/icon.png" alt={"Eventify"} className="logo"/>
                 <a href="#"><h1>Eventify</h1></a>
             </div>
             <div className="menu">
@@ -18,3 +18,5 @@ export const NavBar = () => {
         </nav>
     )
 }
+
+export default NavBar

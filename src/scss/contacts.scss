@@ -59,6 +59,7 @@
   &-info {
     p {
       width: fit-content;
+      text-transform: uppercase;
     }
   }
 }
@@ -68,6 +69,7 @@
   flex-direction: column;
   margin: {
     left: 15%;
+    top: 1%;
   }
 
   p {
@@ -81,7 +83,7 @@
   width: fit-content;
   margin: {
     left: 13%;
-    top: 1%;
+    top: 3%;
   }
 
   a {

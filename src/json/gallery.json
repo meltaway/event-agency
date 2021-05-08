@@ -1,0 +1,29 @@
+{
+  "images": [
+    {
+      "title": "Wedding Ceremony",
+      "description": "Define your wedding style and we will match you with local vendors. We construct a personalized budget and checklist, gather guest information and we do anything else in our power to make your special day unforgettable.",
+      "image": "/images/wedding.jpg"
+    },
+    {
+      "title": "High School Prom",
+      "description": "We always put the wants and needs of students first - they are the stars of the show, after all! We will arrange for a DJ, a suitable venue and all other accommodations to make you never forget this milestone in your life.",
+      "image": "/images/prom.jpg"
+    },
+    {
+      "title": "Corporate Party",
+      "description": "Whether you need to wind down after a busy quarter or engage in some team-building, we've got your back! Let us handle the information gathering, as well as invitation sending, and the party will be in full swing before you know it!",
+      "image": "/images/corporate_party.jpg"
+    },
+    {
+      "title": "Product Presentation",
+      "description": "Have you ever dreamed of becoming Steve Jobs? We offer you an opportunity to impress and influence your potential clients with a professional presentation at any venue you can think of.",
+      "image": "/images/presentation.jpg"
+    },
+    {
+      "title": "Convention",
+      "description": "As your community grows, you will need a place to meet and participate in various fun activities. We will arrange for a large venue with or without catering and make your convention welcoming to all!",
+      "image": "/images/convention.jpg"
+    }
+  ]
+}

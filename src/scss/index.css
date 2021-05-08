@@ -83,12 +83,14 @@ nav {
 }
 .contact-info p {
   width: fit-content;
+  text-transform: uppercase;
 }
 
 .map {
   display: flex;
   flex-direction: column;
   margin-left: 15%;
+  margin-top: 1%;
 }
 .map p {
   width: fit-content;
@@ -99,7 +101,7 @@ nav {
   align-items: flex-start;
   width: fit-content;
   margin-left: 13%;
-  margin-top: 1%;
+  margin-top: 3%;
 }
 .quick-links a {
   text-decoration: none;
@@ -157,7 +159,7 @@ p {
 }
 
 footer {
-  height: 30em;
+  height: 30%;
   background: #1b2846;
   color: #fff;
 }

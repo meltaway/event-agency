@@ -1,7 +1,9 @@
 import React from 'react';
 // components
-import {NavBar} from './components/NavBar';
+import './css/normalize.css'
+import NavBar from './components/NavBar';
 // import EventCard from './components/EventCard';
+import Gallery from './components/Gallery';
 
 // fontawesome
 import {library} from "@fortawesome/fontawesome-svg-core";
@@ -23,6 +25,7 @@ function App() {
         </header>
         <main>
             <section id="gallery">
+                <Gallery />
             </section>
             <section id="about">
                 <h2>Who We Are</h2>
@@ -43,7 +46,7 @@ function App() {
             <div className="contacts-container">
                 <div id="contacts">
                     <div className="contact-logo">
-                        <img src="https://img.icons8.com/dusk/64/000000/christmas-star.png" alt="Eventify" className="logo"/>
+                        <img src="/images/icon.png" alt="Eventify" className="logo"/>
                         <a href="#"><p>Eventify</p></a>
                     </div>
                     <div className="contact-info">
