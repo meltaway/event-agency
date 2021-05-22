@@ -1,11 +1,17 @@
 @import "variables";
 @import "mixins";
 
+header {
+  width: 100%;
+  height: 5em;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+}
+
 nav {
   background: $color-red-primary;
   color: $color-white;
-  height: 5em;
-
   @include flex-align-centered;
   justify-content: space-between;
 }

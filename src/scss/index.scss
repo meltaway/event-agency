@@ -10,7 +10,6 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 section {
@@ -20,6 +19,7 @@ section {
 }
 
 h2 {
+  width: 37%;
   font-size: 2em;
   text-align: center;
   color: $color-brown-accent;
@@ -32,10 +32,10 @@ h2 {
     top: 1em;
     bottom: 1em;
   }
-  width: 37%;
 }
 
 h3 {
+  width: 35%;
   font-size: 1.3em;
   font-weight: bold;
   text-align: center;
@@ -44,7 +44,6 @@ h3 {
     top: 1em;
     bottom: 1em;
   }
-  width: 35%;
 }
 
 p {
@@ -52,8 +51,8 @@ p {
   text-align: center;
   line-height: 1.8;
   margin: {
-    top: .7em;
-    bottom: .7em;
+    top: 0.7em;
+    bottom: 0.7em;
   };
 }
 

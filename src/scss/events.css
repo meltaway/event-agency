@@ -1,0 +1,80 @@
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  column-gap: 30px;
+  row-gap: 50px;
+  width: calc(100px + 4 * 300px);
+  margin-top: 35px;
+}
+
+.event-title, .event-location, .event-date {
+  font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  align-items: flex-start;
+}
+.event-title svg, .event-location svg, .event-date svg {
+  height: 1.8em;
+}
+.event-title {
+  margin-top: 0;
+}
+.event-location, .event-date {
+  font-size: 0.9em;
+  opacity: 50%;
+}
+.event-description {
+  text-align: left;
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+  color: #0d1321;
+}
+
+.card {
+  width: 300px;
+  padding: 10px;
+  height: 470px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-header {
+  padding-bottom: 0 !important;
+}
+.card-header p {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  color: #524540;
+  text-align: left;
+}
+.card-header p svg {
+  margin-right: 10px;
+}
+.card-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.card-actions {
+  height: 45px;
+  width: 100%;
+}
+
+.event-btn-container button {
+  background: #fff;
+  border: none;
+  width: 270px;
+  height: 80px;
+  margin-top: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
+  font-size: 1.3em;
+  color: #a82548;
+  transition: 0.2s;
+}
+.event-btn-container button:hover {
+  background: #a82548;
+  color: #fff;
+}
+
+/*# sourceMappingURL=events.css.map */

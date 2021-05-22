@@ -29,15 +29,18 @@
   left: 0;
 }
 
-.nextButton, .previousButton {
+.nextButton,
+.previousButton {
   color: #fff !important;
 }
-.nextButton:hover, .previousButton:hover {
+.nextButton:hover,
+.previousButton:hover {
   color: #a82548 !important;
 }
 
 .slider {
   height: 60vh;
+  margin-top: 5em;
 }
 
 /*# sourceMappingURL=gallery.css.map */

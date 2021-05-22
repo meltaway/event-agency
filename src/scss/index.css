@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+header {
+  width: 100%;
+  height: 5em;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+}
+
 nav {
   background: #a82548;
   color: #fff;
-  height: 5em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,6 +69,24 @@ nav {
   width: fit-content;
 }
 
+.map {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin-left: 15%;
+  margin-top: 1%;
+}
+.map p {
+  width: fit-content;
+}
+.map iframe {
+  width: 100%;
+}
+
+.contact-info p {
+  width: fit-content;
+  text-transform: uppercase;
+}
 .contact-logo {
   display: flex;
   align-items: center;
@@ -81,37 +106,6 @@ nav {
   width: 25%;
   height: 25%;
 }
-.contact-info p {
-  width: fit-content;
-  text-transform: uppercase;
-}
-
-.map {
-  display: flex;
-  flex-direction: column;
-  margin-left: 15%;
-  margin-top: 1%;
-}
-.map p {
-  width: fit-content;
-}
-
-.quick-links {
-  display: flex;
-  align-items: flex-start;
-  width: fit-content;
-  margin-left: 13%;
-  margin-top: 3%;
-}
-.quick-links a {
-  text-decoration: none;
-  color: #fff;
-  margin-right: 10%;
-  margin-left: 10%;
-}
-.quick-links a:hover {
-  color: #a82548;
-}
 
 body {
   margin: 0;
@@ -129,6 +123,7 @@ section {
 }
 
 h2 {
+  width: 37%;
   font-size: 2em;
   text-align: center;
   color: #864f2f;
@@ -137,17 +132,16 @@ h2 {
   padding-bottom: 1.5em;
   margin-top: 1em;
   margin-bottom: 1em;
-  width: 37%;
 }
 
 h3 {
+  width: 35%;
   font-size: 1.3em;
   font-weight: bold;
   text-align: center;
   color: #524540;
   margin-top: 1em;
   margin-bottom: 1em;
-  width: 35%;
 }
 
 p {

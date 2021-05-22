@@ -37,7 +37,8 @@
   }
 }
 
-.nextButton, .previousButton {
+.nextButton,
+.previousButton {
   color: $color-white !important;
 
   &:hover {
@@ -47,4 +48,6 @@
 
 .slider {
   height: 60vh;
+  margin-top: 5em;
+
 }
