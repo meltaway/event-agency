@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
+import Pagination from "react-js-pagination";
 
 // components
 import './css/normalize.css'
@@ -15,20 +16,21 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {fab} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {type} from "os";
+
 library.add(fas, fab)
 
 
 function App() {
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(0)
 
     const { isLoading, error, data } = useQuery("random-user",
         () => fetch('http://localhost:3001/events', {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }).then((res) => res.json()) );
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'cors'
+        }).then((res) => res.json()) );
 
     let events: JSX.Element;
     if (isLoading)
@@ -36,15 +38,24 @@ function App() {
     else if (error)
         events = <ErrorMessage message={"loading events"}/>
 
+    const PER_PAGE = 8;
+    const offset = page * PER_PAGE;
+
     const nextPage = () => {
-        console.log(data.length, data.length / 8, page)
-        if (page < Math.round(data.length / 8))
+        if (page < Math.ceil(data.length / PER_PAGE))
             setPage(page + 1)
     }
 
     const prevPage = () => {
         if (page > 1)
             setPage(page - 1)
+    }
+
+
+
+    function handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        setPage(pageNumber)
     }
 
     return (
@@ -76,16 +87,24 @@ function App() {
                     <div className={"events-container"}>
                         {
                             events ? events :
-                                getPaginatedItems(page, 8, data).map((e) => {
-                                    return <EventCard
-                                        event={e.event}
-                                        location={e.location}
-                                        date={e.date}
-                                        description={e.description.split('.')[0].split(',')[0] + '.'}
-                                        reviews={[]}
-                                    />
-                                })
+                                data.slice(offset, offset + PER_PAGE)
+                                    .map((e) =>
+                                        <EventCard
+                                            event={e.event}
+                                            location={e.location}
+                                            date={e.date}
+                                            description={e.description.split('.')[0].split(',')[0] + '.'}
+                                            reviews={[]}
+                                        />
+                                    )
                         }
+                        <Pagination
+                            activePage={page}
+                            itemsCountPerPage={8}
+                            totalItemsCount={events ? 0 :data.length}
+                            pageRangeDisplayed={5}
+                            onChange={handlePageChange.bind(this)}
+                        />
                     </div>
                     <div className={"event-btn-container"}>
                         <button onClick={prevPage}>Back</button>
