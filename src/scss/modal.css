@@ -1,0 +1,29 @@
+.modal-container {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  border: 1px solid #524540;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(82, 69, 64, 0.75);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=modal.css.map */

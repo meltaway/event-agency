@@ -9,6 +9,7 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+import ReactModal from 'react-modal';
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +17,7 @@ import {far} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 import './../scss/events.scss';
+import './../scss/modal.scss';
 library.add(fas, far)
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,13 +38,26 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function EventCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
+    const [open, openModal] = useState(false);
+    const [scroll, setScroll] = useState(true);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
+    function noScroll() {
+        window.scrollTo(0, 0);
+    }
+
+    const toggleModal = () => {
+        openModal(!open)
+        !open ?
+            document.getElementsByClassName('App')[0].classList.add('no-scroll') :
+            document.getElementsByClassName('App')[0].classList.remove('no-scroll');
+    };
+
     return (
-        <Card className={"card"}>
+        <Card className={"card"} id={props.uid} key={props.uid}>
             <div>
                 <CardHeader
                     className={"card-header"}
@@ -59,7 +74,10 @@ export default function EventCard(props) {
                 </CardContent>
             </div>
             <CardActions disableSpacing className={"card-actions"}>
-                <IconButton aria-label="add to favorites">
+                <IconButton
+                    aria-label="add to favorites"
+                    onClick={toggleModal}
+                >
                     <CreateRoundedIcon />
                 </IconButton>
                 <IconButton
@@ -82,6 +100,22 @@ export default function EventCard(props) {
                     }
                 </CardContent>
             </Collapse>
+            <ReactModal
+                isOpen={open}
+                onRequestClose={toggleModal}
+                contentLabel={"Modal window with reviews for the event"}
+                className={"modal-container"}
+                overlayClassName={"modal-overlay"}
+                shouldCloseOnOverlayClick={false}
+                ariaHideApp={true}
+                shouldFocusAfterRender={true}
+                shouldCloseOnEsc={true}
+                shouldReturnFocusAfterClose={true}
+                preventScroll={false}
+                parentSelector={() => document.getElementById(props.uid)}
+            >
+                <p onClick={toggleModal}>Modal Content</p>
+            </ReactModal>
         </Card>
     );
 }

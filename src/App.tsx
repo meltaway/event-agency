@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
-import Pagination from "react-js-pagination";
 
 // components
 import './css/normalize.css'
-//import {getRandomRestaurants, formatEvents, postEvents} from './js/event_generation';
-import getPaginatedItems from './js/pagination'
 import NavBar from './components/NavBar';
 import EventCard from './components/EventCard';
 import Gallery from './components/Gallery';
@@ -38,7 +35,7 @@ function App() {
     else if (error)
         events = <ErrorMessage message={"loading events"}/>
 
-    const PER_PAGE = 8;
+    const PER_PAGE = 4;
     const offset = page * PER_PAGE;
 
     const nextPage = () => {
@@ -49,13 +46,6 @@ function App() {
     const prevPage = () => {
         if (page > 1)
             setPage(page - 1)
-    }
-
-
-
-    function handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
-        setPage(pageNumber)
     }
 
     return (
@@ -90,6 +80,7 @@ function App() {
                                 data.slice(offset, offset + PER_PAGE)
                                     .map((e) =>
                                         <EventCard
+                                            uid={e.uid}
                                             event={e.event}
                                             location={e.location}
                                             date={e.date}
@@ -98,13 +89,6 @@ function App() {
                                         />
                                     )
                         }
-                        <Pagination
-                            activePage={page}
-                            itemsCountPerPage={8}
-                            totalItemsCount={events ? 0 :data.length}
-                            pageRangeDisplayed={5}
-                            onChange={handlePageChange.bind(this)}
-                        />
                     </div>
                     <div className={"event-btn-container"}>
                         <button onClick={prevPage}>Back</button>
