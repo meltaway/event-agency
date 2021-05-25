@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import EventCard from './components/EventCard';
 import Gallery from './components/Gallery';
 import { LoadingMessage, ErrorMessage } from './components/Messages';
+import Filters from './components/Filters'
 
 // fontawesome
 import {library} from "@fortawesome/fontawesome-svg-core";
@@ -16,11 +17,29 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 library.add(fas, fab)
 
+function filterEvents(array: Array<any>, filter: String, date: Date) {
+    switch(filter) {
+        case 'before':
+            return array.filter((e) => new Date(e.date) <= date)
+        case 'after':
+            return array.filter((e) => new Date(e.date) >= date)
+        default:
+            return array;
+    }
+}
+
+function sortEvents(array: Array<any>) {
+    return array.sort(function(a,b): any{
+        return (new Date(a.date).getTime() - new Date(b.date).getTime());
+    });
+}
 
 function App() {
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(0);
+    const [filter, setFilter] = useState('dont');
+    const [date, setDate] = useState(new Date());
 
-    const { isLoading, error, data } = useQuery("random-user",
+    const { isLoading, error, data } = useQuery("all-events",
         () => fetch('http://localhost:3001/events', {
             method: 'GET',
             headers: {
@@ -39,13 +58,22 @@ function App() {
     const offset = page * PER_PAGE;
 
     const nextPage = () => {
-        if (page < Math.ceil(data.length / PER_PAGE))
+        if (page < Math.ceil(data.length / PER_PAGE) - 1)
             setPage(page + 1)
     }
 
     const prevPage = () => {
-        if (page > 1)
+        if (page > 0)
             setPage(page - 1)
+    }
+
+    const getRadioFilter = (value) => {
+        setFilter(value)
+    }
+
+    const getSelectedDate = (value) => {
+        setDate(value)
+        date.setHours(0, 0, 0)
     }
 
     return (
@@ -74,24 +102,28 @@ function App() {
                 </section>
                 <section id="events">
                     <h2>What We Do</h2>
+                    <Filters getRadioFilter={getRadioFilter}
+                             getSelectedDate={getSelectedDate}
+                    />
                     <div className={"events-container"}>
                         {
                             events ? events :
-                                data.slice(offset, offset + PER_PAGE)
+                                sortEvents(filterEvents(data, filter, date))
+                                    .slice(offset, offset + PER_PAGE)
                                     .map((e) =>
                                         <EventCard
-                                            uid={e.uid}
+                                            id={e.id}
                                             event={e.event}
                                             location={e.location}
                                             date={e.date}
                                             description={e.description.split('.')[0].split(',')[0] + '.'}
-                                            reviews={[]}
+                                            key={e.id}
                                         />
                                     )
                         }
                     </div>
                     <div className={"event-btn-container"}>
-                        <button onClick={prevPage}>Back</button>
+                        <button onClick={prevPage} disabled={!page}>Back</button>
                         <button onClick={nextPage}>Next</button>
                     </div>
                 </section>

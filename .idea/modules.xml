@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/event-agency.iml" filepath="$PROJECT_DIR$/.idea/event-agency.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../genesis-ui-test-task/.idea/genesis-ui-test-task.iml" filepath="$PROJECT_DIR$/../genesis-ui-test-task/.idea/genesis-ui-test-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../teacher-search/.idea/teacher-search.iml" filepath="$PROJECT_DIR$/../teacher-search/.idea/teacher-search.iml" />
     </modules>
   </component>
 </project>

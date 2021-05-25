@@ -6,8 +6,8 @@
   grid-template-columns: repeat(4, 300px);
   column-gap: 30px;
   row-gap: 50px;
-  width: calc(100px + 4 * 300px);
-  margin-top: 35px;
+  width: 1300px;
+  margin-top: 25px;
 }
 
 .event {
@@ -38,12 +38,60 @@
     overflow: hidden;
     color: $color-black-accent;
   }
+
+  &-filters {
+    width: 1300px;
+    display: flex;
+    align-items: flex-start;
+
+    .filter {
+      &-legend {
+        font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+      }
+
+      &-label {
+        font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+        width: fit-content;
+      }
+
+      &-input-container {
+        display: flex;
+        margin-top: 15px;
+        width: 100%;
+      }
+
+      &-date {
+        border: 2px solid lighten($color-grey-support, 50%);
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+        font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+        padding-left: 10px;
+
+        &:hover {
+          border-color: $color-red-primary;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .date-radio {
+      color: $color-red-primary;
+    }
+
+    .react-datepicker-wrapper {
+      margin-right: 25px;
+      & > div {
+        height: 100%;
+      }
+    }
+  }
 }
 
 .card {
   width: 300px;
   padding: 10px;
-  height: 470px;
+  min-height: 470px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,6 +143,113 @@
     &:hover {
       background: $color-red-primary;
       color: $color-white;
+    }
+
+    &:disabled,
+    &[disabled]{
+      color: lighten($color-grey-support, 20%);
+
+      &:hover{
+        background-color: $color-white;
+        cursor: unset;
+      }
+    }
+  }
+}
+
+.review {
+  &-header {
+    @include flex-align-centered;
+    justify-content: space-between;
+
+    p {
+      width: fit-content;
+      font-size: 1.5em;
+      margin-left: 35px;
+    }
+  }
+
+  &-close-btn {
+    margin-right: 10px !important;
+  }
+
+  &-event-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 35px;
+
+    p {
+      text-align: left;
+      margin: 7px 0;
+      width: fit-content;
+      color: lighten($color-grey-support, 0%);
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 20px 60px 15px 35px;
+
+    .review-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    label {
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      border: 2px solid lighten($color-grey-support, 50%);
+      border-radius: 5px;
+      resize: none;
+      height: 100px;
+      padding: 5px;
+      font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+
+      &:hover {
+        border-color: $color-red-primary;
+        cursor: pointer;
+      }
+    }
+
+    button {
+      margin: {
+        top: 20px;
+        right: 20px;
+      }
+      width: fit-content;
+      background: lighten($color-grey-support, 50%);
+      color: $color-grey-support;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+
+      &:hover {
+        background: lighten($color-grey-support, 40%);
+      }
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      width: fit-content;
+      background: $color-red-primary;
+      color: $color-white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+
+      &:hover {
+        background: darken($color-red-primary, 10%);
+      }
     }
   }
 }

@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
+import {useQuery} from "react-query";
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
+import { IconButton, Collapse, CardActions, CardContent, CardHeader, Card } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import ReactModal from 'react-modal';
+import { LoadingMessage, ErrorMessage } from './Messages';
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
@@ -35,6 +33,23 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
+function makeID() {
+    let result = ''
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    for (let i = 0; i < 2; i++)
+        result += chars.charAt(Math.floor(Math.random() * chars.length))
+    result += Math.random().toString().substr(2, 11)
+    return result
+}
+
+function formatReview(text, event_id) {
+    return {
+        'id': makeID(),
+        'text': text,
+        'event_id': event_id
+    }
+}
+
 export default function EventCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
@@ -45,19 +60,47 @@ export default function EventCard(props) {
         setExpanded(!expanded);
     };
 
-    function noScroll() {
-        window.scrollTo(0, 0);
-    }
-
     const toggleModal = () => {
         openModal(!open)
-        !open ?
-            document.getElementsByClassName('App')[0].classList.add('no-scroll') :
-            document.getElementsByClassName('App')[0].classList.remove('no-scroll');
     };
 
+    const { isLoading, error, data } = useQuery("all-reviews",
+        () => fetch('http://localhost:3001/reviews', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'cors'
+        }).then((res) => res.json()) )
+
+    let reviews: JSX.Element;
+    if (isLoading)
+        reviews = <LoadingMessage message={"Loading events..."}/>
+    else if (error)
+        reviews = <ErrorMessage message={"loading events"}/>
+
+    const addReview = () => {
+        fetch('http://localhost:3001/reviews')
+            .then((response) => response.json())
+            .then((items) => {
+                const text = (document.getElementById("review-text-" + props.id) as HTMLInputElement).value.trim()
+                console.log('text:', text)
+                if (text.length !== 0)
+                    fetch('http://localhost:3001/reviews', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formatReview(text, props.id), null, 4),
+                    });
+                else
+                    alert('error ' + text)
+        });
+    }
+
+
     return (
-        <Card className={"card"} id={props.uid} key={props.uid}>
+        <Card className={"card"} data-id={props.id} key={props.id}>
             <div>
                 <CardHeader
                     className={"card-header"}
@@ -75,7 +118,7 @@ export default function EventCard(props) {
             </div>
             <CardActions disableSpacing className={"card-actions"}>
                 <IconButton
-                    aria-label="add to favorites"
+                    aria-label="write a review"
                     onClick={toggleModal}
                 >
                     <CreateRoundedIcon />
@@ -94,9 +137,11 @@ export default function EventCard(props) {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     {
-                        props.reviews.map((obj) => {
-                            return <q className="review" key={obj.id}>{obj.text}</q>
-                        })
+                        reviews ? reviews :
+                        data.filter((obj) => obj.event_id === props.id)
+                            .map((obj) => {
+                                return <q className="review" key={obj.id}>{obj.text}</q>
+                            })
                     }
                 </CardContent>
             </Collapse>
@@ -112,9 +157,33 @@ export default function EventCard(props) {
                 shouldCloseOnEsc={true}
                 shouldReturnFocusAfterClose={true}
                 preventScroll={false}
-                parentSelector={() => document.getElementById(props.uid)}
             >
-                <p onClick={toggleModal}>Modal Content</p>
+                <div className={"review-header"}>
+                    <p>Submit a review</p>
+                    <IconButton
+                        aria-label="close review modal"
+                        onClick={toggleModal}
+                        className={"review-close-btn"}
+                    >
+                        <CloseRoundedIcon />
+                    </IconButton>
+                </div>
+                <div className={"review-event-info"}>
+                    <p>This is the event you will be leaving a review for:</p>
+                    <p>Event name: {props.event}</p>
+                    <p>Location: {props.location}</p>
+                    <p>Date: {props.date}</p>
+                </div>
+                <form className={"review-form"}>
+                    <div className={"review-container"}>
+                        <label htmlFor={"review-text"}>Write your review here:</label>
+                        <textarea name={"review-text"} id={"review-text-" + props.id}/>
+                    </div>
+                    <div>
+                        <button onClick={toggleModal}>Cancel</button>
+                        <input type={"submit"} value={"Submit"} onClick={addReview}/>
+                    </div>
+                </form>
             </ReactModal>
         </Card>
     );
