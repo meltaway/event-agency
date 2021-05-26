@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 
-// components
+// blocks
 import './css/normalize.css'
 import NavBar from './components/NavBar';
 import EventCard from './components/EventCard';
@@ -35,9 +35,11 @@ function sortEvents(array: Array<any>) {
 }
 
 function App() {
-    const [page, setPage] = useState(0);
-    const [filter, setFilter] = useState('dont');
-    const [date, setDate] = useState(new Date());
+    const [page, setPage] = useState<number>(0);
+    const [filter, setFilter] = useState<String>('dont');
+    const [date, setDate] = useState<Date>(new Date());
+    const [checkedType, setCheckedType] = useState<boolean>(false);
+    const [type, setType] = useState<String>(null)
 
     const { isLoading, error, data } = useQuery("all-events",
         () => fetch('http://localhost:3001/events', {
@@ -76,6 +78,14 @@ function App() {
         date.setHours(0, 0, 0)
     }
 
+    const getCheckedFilter = (checked) => {
+        setCheckedType(checked)
+    }
+
+    const getSelectedType = (selectedOption) => {
+        setType(selectedOption)
+    }
+
     return (
         <div className="App">
             <header>
@@ -104,6 +114,8 @@ function App() {
                     <h2>What We Do</h2>
                     <Filters getRadioFilter={getRadioFilter}
                              getSelectedDate={getSelectedDate}
+                             getChecked={getCheckedFilter}
+                             getSelected={getSelectedType}
                     />
                     <div className={"events-container"}>
                         {

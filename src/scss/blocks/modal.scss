@@ -1,15 +1,18 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
 .modal-container {
   position: absolute;
   top: 20%;
   left: 30%;
   width: 40%;
-  border: 1px solid #524540;
-  background: #fff;
+  border: 1px solid $color-grey-support;
+  background: $color-white;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   border-radius: 4px;
   outline: none;
-  padding: 20px;
+  padding: 20px 
 }
 
 .modal-overlay {
@@ -25,5 +28,3 @@
 .no-scroll {
   overflow: hidden;
 }
-
-/*# sourceMappingURL=modal.css.map */

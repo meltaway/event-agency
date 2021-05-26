@@ -1,10 +1,17 @@
 .events-container {
   display: grid;
-  grid-template-columns: repeat(4, 300px);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 30px;
   row-gap: 50px;
-  width: 1300px;
+  width: 70%;
   margin-top: 25px;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 70%;
 }
 
 .event-title, .event-location, .event-date {
@@ -29,9 +36,12 @@
   color: #0d1321;
 }
 .event-filters {
-  width: 1300px;
+  width: 50%;
   display: flex;
   align-items: flex-start;
+}
+.event-filters:nth-child(2) {
+  margin-left: -120px;
 }
 .event-filters .filter-legend {
   font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
@@ -43,7 +53,7 @@
 .event-filters .filter-input-container {
   display: flex;
   margin-top: 15px;
-  width: 100%;
+  width: 80%;
 }
 .event-filters .filter-date {
   border: 2px solid #cfc6c2;
@@ -55,6 +65,7 @@
 }
 .event-filters .filter-date:hover {
   border-color: #a82548;
+  outline: #a82548;
   cursor: pointer;
 }
 .event-filters .date-radio {
@@ -68,7 +79,6 @@
 }
 
 .card {
-  width: 300px;
   padding: 10px;
   min-height: 470px;
   display: flex;
@@ -173,6 +183,7 @@
 }
 .review-form textarea:hover {
   border-color: #a82548;
+  outline: #a82548;
   cursor: pointer;
 }
 .review-form button {

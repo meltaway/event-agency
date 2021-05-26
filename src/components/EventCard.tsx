@@ -14,8 +14,8 @@ import {fas} from "@fortawesome/free-solid-svg-icons";
 import {far} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-import './../scss/events.scss';
-import './../scss/modal.scss';
+import '../scss/blocks/events.scss';
+import '../scss/blocks/modal.scss';
 library.add(fas, far)
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -52,15 +52,15 @@ function formatReview(text, event_id) {
 
 export default function EventCard(props) {
     const classes = useStyles();
-    const [expanded, setExpanded] = useState(false);
-    const [open, openModal] = useState(false);
+    const [expanded, setExpanded] = useState<boolean>(false);
+    const [open, openModal] = useState<Boolean>(false);
     const [scroll, setScroll] = useState(true);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
-    const toggleModal = () => {
+    const handleModal = () => {
         openModal(!open)
     };
 
@@ -79,26 +79,19 @@ export default function EventCard(props) {
     else if (error)
         reviews = <ErrorMessage message={"loading events"}/>
 
-    const addReview = () => {
-        fetch('http://localhost:3001/reviews')
-            .then((response) => response.json())
-            .then((items) => {
-                const text = (document.getElementById("review-text-" + props.id) as HTMLInputElement).value.trim()
-                console.log('text:', text)
-                if (text.length !== 0)
-                    fetch('http://localhost:3001/reviews', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(formatReview(text, props.id), null, 4),
-                    });
-                else
-                    alert('error ' + text)
-        });
+    const handleSubmit = () => {
+        const text = (document.getElementById("review-text-" + props.id) as HTMLInputElement).value.trim()
+        if (text.length !== 0) {
+            fetch('http://localhost:3001/reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formatReview(text, props.id), null, 4)
+            }).then(response => response.json())
+        }
     }
-
-
+    
     return (
         <Card className={"card"} data-id={props.id} key={props.id}>
             <div>
@@ -119,7 +112,7 @@ export default function EventCard(props) {
             <CardActions disableSpacing className={"card-actions"}>
                 <IconButton
                     aria-label="write a review"
-                    onClick={toggleModal}
+                    onClick={handleModal}
                 >
                     <CreateRoundedIcon />
                 </IconButton>
@@ -147,7 +140,7 @@ export default function EventCard(props) {
             </Collapse>
             <ReactModal
                 isOpen={open}
-                onRequestClose={toggleModal}
+                onRequestClose={handleModal}
                 contentLabel={"Modal window with reviews for the event"}
                 className={"modal-container"}
                 overlayClassName={"modal-overlay"}
@@ -162,7 +155,7 @@ export default function EventCard(props) {
                     <p>Submit a review</p>
                     <IconButton
                         aria-label="close review modal"
-                        onClick={toggleModal}
+                        onClick={handleModal}
                         className={"review-close-btn"}
                     >
                         <CloseRoundedIcon />
@@ -180,8 +173,8 @@ export default function EventCard(props) {
                         <textarea name={"review-text"} id={"review-text-" + props.id}/>
                     </div>
                     <div>
-                        <button onClick={toggleModal}>Cancel</button>
-                        <input type={"submit"} value={"Submit"} onClick={addReview}/>
+                        <button onClick={handleModal}>Cancel</button>
+                        <input type={"submit"} value={"Submit"} onClick={handleSubmit}/>
                     </div>
                 </form>
             </ReactModal>

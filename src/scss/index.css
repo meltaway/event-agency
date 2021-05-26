@@ -1,161 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
-header {
-  width: 100%;
-  height: 5em;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 4 | @import "./src/scss/blocks/menu";
+ *   |         ^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   index.scss 4:9  root stylesheet */
 
-nav {
-  background: #a82548;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  width: 50px;
-  height: 50px;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
-.title {
-  display: flex;
-  align-items: center;
-}
-.title a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.menu {
-  font-size: 1.2em;
-  display: flex;
-  align-items: center;
-}
-.menu a {
-  color: #fff;
-  margin-left: 1.5em;
-  margin-right: 1.5em;
-  text-decoration: none;
-}
-
-.contacts-container {
-  display: flex;
-  justify-content: flex-start;
-  padding-top: 1%;
-}
-
-#contacts {
-  position: relative;
-  left: 10%;
-  top: -5em;
-  background: #a82548;
-  width: 30%;
-  height: 20%;
-  padding: 2.7%;
-}
-
-.copyright {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-.copyright p {
-  width: fit-content;
-}
-
-.map {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  margin-left: 15%;
-  margin-top: 1%;
-}
-.map p {
-  width: fit-content;
-}
-.map iframe {
-  width: 100%;
-}
-
-.contact-info p {
-  width: fit-content;
-  text-transform: uppercase;
-}
-.contact-logo {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 7%;
-}
-.contact-logo a {
-  color: #fff;
-  text-decoration: none;
-  width: fit-content;
-  font-size: 3em;
-}
-.contact-logo a p {
-  margin: 0;
-}
-.contact-logo .logo {
-  width: 25%;
-  height: 25%;
-}
-
-body {
-  margin: 0;
-  font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-h2 {
-  width: 37%;
-  font-size: 2em;
-  text-align: center;
-  color: #864f2f;
-  border-bottom: #524540 2px solid;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-  margin-top: 1em;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
   margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 4 \2502  @import \"./src/scss/blocks/menu\";\d\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   index.scss 4:9  root stylesheet";
 }
-
-h3 {
-  width: 35%;
-  font-size: 1.3em;
-  font-weight: bold;
-  text-align: center;
-  color: #524540;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-p {
-  width: 60%;
-  text-align: center;
-  line-height: 1.8;
-  margin-top: 0.7em;
-  margin-bottom: 0.7em;
-}
-
-footer {
-  height: 30%;
-  background: #1b2846;
-  color: #fff;
-}
-
-/*# sourceMappingURL=index.css.map */

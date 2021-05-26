@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
-import './../scss/gallery.scss';
+import '../scss/blocks/gallery.scss';
 import gallery from './../json/gallery.json'
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";

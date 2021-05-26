@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 @import "variables";
 @import "mixins";
-@import "menu";
-@import "contacts";
+@import "./src/scss/blocks/menu";
+@import "./src/scss/blocks/contacts";
 
 body {
   margin: 0;

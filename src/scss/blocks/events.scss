@@ -1,13 +1,19 @@
-@import "variables";
-@import "mixins";
+@import "./../variables";
+@import "./../mixins";
 
 .events-container {
   display: grid;
-  grid-template-columns: repeat(4, 300px);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 30px;
   row-gap: 50px;
-  width: 1300px;
+  width: 70%;
   margin-top: 25px;
+}
+
+.filter-container {
+  @include flex-align-centered;
+  justify-content: flex-start;
+  width: 70%;
 }
 
 .event {
@@ -40,9 +46,13 @@
   }
 
   &-filters {
-    width: 1300px;
+    width: 50%;
     display: flex;
     align-items: flex-start;
+
+    &:nth-child(2) {
+      margin-left: -120px;
+    }
 
     .filter {
       &-legend {
@@ -57,7 +67,7 @@
       &-input-container {
         display: flex;
         margin-top: 15px;
-        width: 100%;
+        width: 80%;
       }
 
       &-date {
@@ -70,6 +80,7 @@
 
         &:hover {
           border-color: $color-red-primary;
+          outline: $color-red-primary;
           cursor: pointer;
         }
       }
@@ -89,7 +100,6 @@
 }
 
 .card {
-  width: 300px;
   padding: 10px;
   min-height: 470px;
   display: flex;
@@ -215,6 +225,7 @@
 
       &:hover {
         border-color: $color-red-primary;
+        outline: $color-red-primary;
         cursor: pointer;
       }
     }
