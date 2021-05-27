@@ -1,0 +1,61 @@
+@import "./../variables";
+@import "./../mixins";
+
+.booking-form {
+    width: 60%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+        width: $size-100;
+    }
+
+    p {
+        text-align: left;
+    }
+}
+
+.booking-field-container {
+    @include flex-align-centered;
+    justify-content: flex-start;
+}
+
+.slick-slider {
+    width: $size-booking;
+
+}
+
+.slick-next,
+.slick-prev {
+    background: $color-red-primary;
+    border-radius: 50%;
+
+    &::before {
+        background: $color-red-primary;
+        border-radius: 50%;
+        @include flex-align-centered;
+        justify-content: center;
+    }
+}
+
+.venue-image {
+    width: $size-booking;
+    height: $size-booking;
+    object-fit: cover;
+}
+
+.booking-date {
+    border: 2px solid lighten($color-grey-support, 50%);
+    border-radius: 5px;
+    width: $size-100;
+    height: $size-100;
+    font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    padding-left: 10px;
+
+    &:hover {
+        border-color: $color-red-primary;
+        outline: $color-red-primary;
+        cursor: pointer;
+    }
+}

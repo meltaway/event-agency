@@ -17,23 +17,23 @@
 .event-title, .event-location, .event-date {
   font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
   align-items: flex-start;
+  padding: 0 20px;
 }
 .event-title svg, .event-location svg, .event-date svg {
   height: 1.8em;
 }
 .event-title {
   margin-top: 0;
+  padding-top: 20px;
 }
 .event-location, .event-date {
   font-size: 0.9em;
   opacity: 50%;
 }
-.event-description {
-  text-align: left;
+.event-image {
   width: 100%;
-  height: fit-content;
-  overflow: hidden;
-  color: #0d1321;
+  height: 100%;
+  padding-top: 10px;
 }
 .event-filters {
   width: 50%;
@@ -79,15 +79,15 @@
 }
 
 .card {
-  padding: 10px;
-  min-height: 470px;
+  padding: 0;
+  min-height: 430px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 .card-header {
-  padding-bottom: 0 !important;
+  padding: 0 !important;
 }
 .card-header p {
   width: 100%;
@@ -100,8 +100,8 @@
   margin-right: 10px;
 }
 .card-content {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  padding: 0 !important;
+  height: 200px !important;
 }
 .card-actions {
   height: 45px;
@@ -130,88 +130,6 @@
 .event-btn-container button:disabled:hover, .event-btn-container button[disabled]:hover {
   background-color: #fff;
   cursor: unset;
-}
-
-.review-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.review-header p {
-  width: fit-content;
-  font-size: 1.5em;
-  margin-left: 35px;
-}
-.review-close-btn {
-  margin-right: 10px !important;
-}
-.review-event-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-left: 35px;
-}
-.review-event-info p {
-  text-align: left;
-  margin: 7px 0;
-  width: fit-content;
-  color: #524540;
-}
-.review-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin: 20px 60px 15px 35px;
-}
-.review-form .review-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-}
-.review-form label {
-  width: fit-content;
-  margin-bottom: 10px;
-}
-.review-form textarea {
-  border: 2px solid #cfc6c2;
-  border-radius: 5px;
-  resize: none;
-  height: 100px;
-  padding: 5px;
-  font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
-}
-.review-form textarea:hover {
-  border-color: #a82548;
-  outline: #a82548;
-  cursor: pointer;
-}
-.review-form button {
-  margin-top: 20px;
-  margin-right: 20px;
-  width: fit-content;
-  background: #cfc6c2;
-  color: #524540;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 20px;
-  font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
-}
-.review-form button:hover {
-  background: #b9aba5;
-}
-.review-form input[type=submit] {
-  margin-top: 20px;
-  width: fit-content;
-  background: #a82548;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 20px;
-  font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
-}
-.review-form input[type=submit]:hover {
-  background: #7e1c36;
 }
 
 /*# sourceMappingURL=events.css.map */

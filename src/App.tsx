@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 
 // blocks
@@ -8,27 +8,27 @@ import EventCard from './components/EventCard';
 import Gallery from './components/Gallery';
 import { LoadingMessage, ErrorMessage } from './components/Messages';
 import Filters from './components/Filters'
+import BookingForm from "./components/BookingForm";
 
 // fontawesome
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {fab} from "@fortawesome/free-brands-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 library.add(fas, fab)
 
-function filterEvents(array: Array<any>, filter: String, date: Date) {
+function filterEvents(array: Array<any>, filter: String, date: Date, type: any | null) {
     switch(filter) {
         case 'before':
-            return array.filter((e) => new Date(e.date) <= date)
+            return (type ? array.filter((e) => e.type === type.label) : array).filter((e) => new Date(e.date) <= date)
         case 'after':
-            return array.filter((e) => new Date(e.date) >= date)
+            return (type ? array.filter((e) => e.type === type.label) : array).filter((e) => new Date(e.date) >= date)
         default:
-            return array;
+            return (type ? array.filter((e) => e.type === type.label) : array);
     }
 }
 
-function sortEvents(array: Array<any>) {
+function sortEventsByDate(array: Array<any>) {
     return array.sort(function(a,b): any{
         return (new Date(a.date).getTime() - new Date(b.date).getTime());
     });
@@ -120,12 +120,14 @@ function App() {
                     <div className={"events-container"}>
                         {
                             events ? events :
-                                sortEvents(filterEvents(data, filter, date))
+                                sortEventsByDate(filterEvents(data, filter, date, checkedType ? type : null))
                                     .slice(offset, offset + PER_PAGE)
                                     .map((e) =>
                                         <EventCard
                                             id={e.id}
                                             event={e.event}
+                                            image={e.image}
+                                            type={e.type}
                                             location={e.location}
                                             date={e.date}
                                             description={e.description.split('.')[0].split(',')[0] + '.'}
@@ -141,6 +143,7 @@ function App() {
                 </section>
                 <section id="booking">
                     <h2>Book an Event</h2>
+                    <BookingForm />
                 </section>
             </main>
             <footer>

@@ -45,7 +45,7 @@
   }
 
   iframe {
-    width: 100%;
+    width: $size-100;
   }
 }
 
@@ -76,8 +76,8 @@
     }
 
     .logo {
-      width: 25%;
-      height: 25%;
+      width: $size-25;
+      height: $size-25;
     }
   }
 }

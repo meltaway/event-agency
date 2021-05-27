@@ -35,7 +35,7 @@ export default function Filters({ getSelectedDate, getRadioFilter, getChecked, g
 
     const handleCheckboxChange = () => {
         setTypeFilter(!typeFilter);
-        getChecked(typeFilter);
+        getChecked(!typeFilter);
     };
 
     const handleSelectionChange = (selectedOption) => {
@@ -53,7 +53,8 @@ export default function Filters({ getSelectedDate, getRadioFilter, getChecked, g
                                     id={"filter-date"}
                                     className={"filter-date"}
                                     onChange={(date) => handleDateChange(date)} />
-                        <RadioGroup aria-label="filter" name="filter" value={value} onChange={handleRadioChange} row>
+                        <RadioGroup aria-label="filter" name="filter"
+                                    value={value} onChange={handleRadioChange} row>
                             <FormControlLabel value="before"
                                               control={<Radio color={"primary"}/>}
                                               id={"filter-date-before"}

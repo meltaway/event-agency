@@ -3,7 +3,7 @@
 
 .modal-container {
   position: absolute;
-  top: 20%;
+  top: 10%;
   left: 30%;
   width: 40%;
   border: 1px solid $color-grey-support;
@@ -12,7 +12,7 @@
   -webkit-overflow-scrolling: touch;
   border-radius: 4px;
   outline: none;
-  padding: 20px 
+  padding: 20px;
 }
 
 .modal-overlay {
@@ -27,4 +27,102 @@
 
 .no-scroll {
   overflow: hidden;
+}
+
+.review {
+  &-header {
+    @include flex-align-centered;
+    justify-content: space-between;
+
+    p {
+      width: fit-content;
+      font-size: 1.5em;
+      margin-left: 35px;
+    }
+  }
+
+  &-close-btn {
+    margin-right: 10px !important;
+  }
+
+  &-event-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 35px;
+
+    p {
+      text-align: left;
+      margin: 7px 0;
+      width: fit-content;
+      color: lighten($color-grey-support, 0%);
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 20px 55px 15px 35px;
+
+    .review-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: $size-100;
+    }
+
+    label {
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      border: 2px solid lighten($color-grey-support, 50%);
+      border-radius: 5px;
+      resize: none;
+      height: 100px;
+      padding: 5px;
+      font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+
+      &:hover {
+        border-color: $color-red-primary;
+        outline: $color-red-primary;
+        cursor: pointer;
+      }
+    }
+
+    button {
+      margin: {
+        top: 20px;
+        right: 20px;
+      }
+      width: fit-content;
+      background: lighten($color-grey-support, 50%);
+      color: $color-grey-support;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+
+      &:hover {
+        background: lighten($color-grey-support, 40%);
+      }
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      width: fit-content;
+      background: $color-red-primary;
+      color: $color-white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+
+      &:hover {
+        background: darken($color-red-primary, 10%);
+      }
+    }
+  }
 }

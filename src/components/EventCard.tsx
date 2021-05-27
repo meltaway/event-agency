@@ -91,7 +91,7 @@ export default function EventCard(props) {
             }).then(response => response.json())
         }
     }
-    
+
     return (
         <Card className={"card"} data-id={props.id} key={props.id}>
             <div>
@@ -106,7 +106,9 @@ export default function EventCard(props) {
                     }
                 />
                 <CardContent className={"card-content"}>
-                    <p className={"event-description"}>{props.description}</p>
+                    <div style={{background: `rgba(0, 0, 0, 0) url(${props.image}) no-repeat scroll center center`}}
+                         className={"event-image"} />
+                    {/*<p className={"event-description"}>{props.description}</p>*/}
                 </CardContent>
             </div>
             <CardActions disableSpacing className={"card-actions"}>
@@ -163,7 +165,7 @@ export default function EventCard(props) {
                 </div>
                 <div className={"review-event-info"}>
                     <p>This is the event you will be leaving a review for:</p>
-                    <p>Event name: {props.event}</p>
+                    <p>Event: {props.event} ({props.type})</p>
                     <p>Location: {props.location}</p>
                     <p>Date: {props.date}</p>
                 </div>
