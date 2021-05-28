@@ -45,5 +45,9 @@ nav {
       right: 1.5em;
     }
     text-decoration: none;
+
+    @include for-small-screens {
+      display: none;
+    }
   }
 }

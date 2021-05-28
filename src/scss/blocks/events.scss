@@ -8,12 +8,19 @@
   row-gap: 50px;
   width: 70%;
   margin-top: 25px;
+  @include for-small-screens {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .filter-container {
   @include flex-align-centered;
   justify-content: flex-start;
   width: 70%;
+
+  @include for-small-screens {
+    flex-direction: column;
+  }
 }
 
 .event {
@@ -58,6 +65,10 @@
     width: $size-50;
     display: flex;
     align-items: flex-start;
+
+    @include for-small-screens {
+      width: $size-100;
+    }
 
     &:nth-child(2) {
       margin-left: -120px;
@@ -143,19 +154,25 @@
 }
 
 .event-btn-container {
+  @include for-small-screens {
+    @include flex-align-centered;
+    width: $size-100;
+  }
+
   button {
     background: $color-white;
     border: none;
     width: 270px;
     height: 80px;
-    margin: {
-      top: 40px;
-      right: 40px;
-      left: 40px;
-    }
+    margin: 40px 40px 0 40px;
     font-size: 1.3em;
     color: $color-red-primary;
     transition: 0.2s;
+
+    @include for-small-screens {
+      width: 50%;
+      margin: 20px 20px 0 20px;
+    }
 
     &:hover {
       background: $color-red-primary;

@@ -27,10 +27,14 @@ h2 {
   padding: {
     top: 1.5em;
     bottom: 1.5em;
-  };
+  }
   margin: {
     top: 1em;
     bottom: 1em;
+  }
+
+  @include for-small-screens {
+    width: fit-content;
   }
 }
 
@@ -43,6 +47,10 @@ h3 {
   margin: {
     top: 1em;
     bottom: 1em;
+  }
+
+  @include for-small-screens {
+    width: 70%;
   }
 }
 

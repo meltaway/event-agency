@@ -15,12 +15,20 @@
 
   p {
     font-size: 1.2em;
+    @include for-small-screens {
+      font-size: 0.9em;
+      width: 50%;
+    }
   }
 
   h3 {
     font-size: 2em;
     margin: {
       top: 10%;
+    }
+    @include for-small-screens {
+      font-size: 1.8em;
+      width: 50%;
     }
   }
 

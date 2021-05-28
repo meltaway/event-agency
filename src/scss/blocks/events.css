@@ -6,12 +6,22 @@
   width: 70%;
   margin-top: 25px;
 }
+@media only screen and (max-width: 768px) {
+  .events-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 .filter-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 70%;
+}
+@media only screen and (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+  }
 }
 
 .event-title, .event-location, .event-date {
@@ -39,6 +49,11 @@
   width: 50%;
   display: flex;
   align-items: flex-start;
+}
+@media only screen and (max-width: 768px) {
+  .event-filters {
+    width: 100%;
+  }
 }
 .event-filters:nth-child(2) {
   margin-left: -120px;
@@ -108,17 +123,28 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 768px) {
+  .event-btn-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+}
 .event-btn-container button {
   background: #fff;
   border: none;
   width: 270px;
   height: 80px;
-  margin-top: 40px;
-  margin-right: 40px;
-  margin-left: 40px;
+  margin: 40px 40px 0 40px;
   font-size: 1.3em;
   color: #a82548;
   transition: 0.2s;
+}
+@media only screen and (max-width: 768px) {
+  .event-btn-container button {
+    width: 50%;
+    margin: 20px 20px 0 20px;
+  }
 }
 .event-btn-container button:hover {
   background: #a82548;
