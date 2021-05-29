@@ -5,6 +5,10 @@
   display: flex;
   justify-content: flex-start;
   padding-top: 1%;
+
+  @include for-small-screens {
+    flex-direction: column;
+  }
 }
 
 #contacts {
@@ -15,19 +19,35 @@
   width: 30%;
   height: 20%;
   padding: 2.7%;
+
+  @include for-small-screens {
+    width: 80%;
+  }
 }
 
 .copyright {
   display: flex;
   justify-content: space-between;
-
   margin: {
     left: 10%;
     right: 10%;
   }
 
+  @include for-small-screens {
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
+
   p {
     width: fit-content;
+
+    @include for-small-screens {
+      width: $size-100;
+      text-align: right;
+      margin: 0;
+      font-size: 0.8em;
+    }
   }
 }
 
@@ -38,6 +58,11 @@
   margin: {
     left: 15%;
     top: 1%;
+  }
+
+  @include for-small-screens {
+    width: 70%;
+    margin-top: -15%;
   }
 
   p {
@@ -51,9 +76,18 @@
 
 .contact {
   &-info {
+    @include for-small-screens {
+      padding-left: 10px;
+    }
+
     p {
       width: fit-content;
       text-transform: uppercase;
+
+      @include for-small-screens {
+        font-size: 0.9em;
+        text-align: left;
+      }
     }
   }
 
@@ -64,11 +98,19 @@
       bottom: 7%;
     }
 
+    @include for-small-screens {
+      margin-top: 10px;
+    }
+
     a {
       color: $color-white;
       text-decoration: none;
       width: fit-content;
       font-size: 3em;
+
+      @include for-small-screens {
+        font-size: 1.5em;
+      }
 
       p {
         margin: 0;

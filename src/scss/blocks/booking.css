@@ -10,6 +10,12 @@
 .booking-form p {
   text-align: left;
 }
+@media only screen and (max-width: 768px) {
+  .booking-form {
+    margin-bottom: 10%;
+    width: 70%;
+  }
+}
 .booking-form .booking-field-container {
   display: flex;
   align-items: center;
@@ -23,13 +29,13 @@
   height: fit-content;
 }
 .booking-form .booking-field-container:nth-child(6) {
-  padding-left: 20px;
+  padding-left: 40px;
   margin-bottom: 20px;
 }
 .booking-form .booking-field-container:nth-child(6) label {
   height: 40px;
   width: fit-content;
-  margin-left: -20px;
+  margin-left: -40px;
   margin-bottom: 5px;
 }
 .booking-form .booking-field-container label {
@@ -37,6 +43,11 @@
   width: 10%;
   display: flex;
   align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  .booking-form .booking-field-container label {
+    width: 40%;
+  }
 }
 .booking-form .booking-input-field {
   height: 100%;
@@ -56,39 +67,11 @@
   outline: #a82548;
   cursor: pointer;
 }
-.booking-form textarea {
-  resize: none;
-  width: 60% !important;
-  height: 100px !important;
-  padding: 10px;
-}
-.booking-form .slick-slider {
-  width: 300px;
-}
-.booking-form .slick-next,
-.booking-form .slick-prev {
-  background: #a82548;
-  border-radius: 50%;
-}
-.booking-form .slick-next::before,
-.booking-form .slick-prev::before {
-  background: #a82548;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.booking-form .venue-image {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-}
-.booking-form .react-datepicker-wrapper {
-  height: 100%;
-  width: 20%;
-}
-.booking-form .react-datepicker-wrapper > * {
-  height: 100%;
+@media only screen and (max-width: 768px) {
+  .booking-form .booking-field {
+    width: 50%;
+    margin-left: 10px;
+  }
 }
 .booking-form .booking-date {
   width: 100%;
@@ -97,6 +80,68 @@
 .booking-form .booking-select {
   margin-left: 0 !important;
   width: 20% !important;
+}
+.booking-form textarea {
+  resize: none;
+  width: 60% !important;
+  height: 100px !important;
+  padding: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .booking-form textarea {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+.booking-form .slick-slider {
+  width: 300px;
+}
+@media only screen and (max-width: 768px) {
+  .booking-form .slick-slider {
+    width: 200px;
+  }
+}
+.booking-form .slick-next, .booking-form .slick-prev {
+  width: 20px;
+  height: 20px;
+  background: #a82548;
+  border-radius: 50%;
+}
+.booking-form .slick-next::before, .booking-form .slick-prev::before {
+  font-size: 20px;
+  background: #a82548;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 768px) {
+  .booking-form .slick-next, .booking-form .slick-prev {
+    display: none !important;
+  }
+}
+.booking-form .venue-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+@media only screen and (max-width: 768px) {
+  .booking-form .venue-image {
+    width: 200px;
+    height: 200px;
+  }
+}
+.booking-form .react-datepicker-wrapper {
+  height: 100%;
+  width: 20%;
+}
+.booking-form .react-datepicker-wrapper > * {
+  height: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .booking-form .react-datepicker-wrapper {
+    width: 50%;
+  }
 }
 .booking-form .info-tooltip {
   height: 100%;
@@ -110,6 +155,11 @@
 }
 .booking-form .info-icon:hover {
   color: #a82548;
+}
+@media only screen and (max-width: 768px) {
+  .booking-form .info-icon {
+    display: none;
+  }
 }
 .booking-form .info-text {
   height: 75%;

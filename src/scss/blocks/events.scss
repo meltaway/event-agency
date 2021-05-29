@@ -68,10 +68,21 @@
 
     @include for-small-screens {
       width: $size-100;
+
+      &:first-child {
+        .filter-input-container {
+          flex-direction: column;
+          margin-bottom: 20px;
+        }
+      }
     }
 
     &:nth-child(2) {
       margin-left: -120px;
+
+      @include for-small-screens {
+        margin-left: 0;
+      }
     }
 
     .filter {
@@ -88,6 +99,18 @@
         display: flex;
         margin-top: 15px;
         width: 80%;
+
+        @include for-small-screens {
+          width: $size-100;
+
+          .type-select {
+            width: $size-100;
+
+            &__menu {
+              width: 210px;
+            }
+          }
+        }
       }
 
       &-date {
@@ -112,8 +135,15 @@
 
     .react-datepicker-wrapper {
       margin-right: 25px;
+
       & > div {
         height: $size-100;
+      }
+
+      @include for-small-screens {
+        height: 40px;
+        margin-right: 0;
+        width: $size-100;
       }
     }
   }

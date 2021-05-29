@@ -15,6 +15,11 @@
         text-align: left;
     }
 
+    @include for-small-screens {
+        margin-bottom: 10%;
+        width: 70%;
+    }
+
     .booking-field-container {
         @include flex-align-centered;
         justify-content: flex-start;
@@ -29,43 +34,66 @@
         }
 
         &:nth-child(6) {
-            padding-left: 20px;
+            padding-left: 40px;
             margin-bottom: 20px;
+
             label {
                 height: 40px;
                 width: fit-content;
                 margin: {
-                    left: -20px;
+                    left: -40px;
                     bottom: 5px;
                 }
             }
+
         }
 
         label {
             height: $size-100;
             width: 10%;
             @include flex-align-centered;
+
+            @include for-small-screens {
+                width: 40%;
+            }
         }
     }
 
-    .booking-input-field {
-        height: $size-100;
-        padding-left: 20px;
-        font-size: 1em;
-    }
+    .booking {
+        &-input-field {
+            height: $size-100;
+            padding-left: 20px;
+            font-size: 1em;
+        }
 
-    .booking-field {
-        border: 2px solid lighten($color-grey-support, 50%);
-        outline: lighten($color-grey-support, 50%);
-        border-radius: 5px;
-        height: $size-100;
-        width: 20%;
-        font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+        &-field {
+            border: 2px solid lighten($color-grey-support, 50%);
+            outline: lighten($color-grey-support, 50%);
+            border-radius: 5px;
+            height: $size-100;
+            width: 20%;
+            font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
 
-        &:hover {
-            border-color: $color-red-primary;
-            outline: $color-red-primary;
-            cursor: pointer;
+            &:hover {
+                border-color: $color-red-primary;
+                outline: $color-red-primary;
+                cursor: pointer;
+            }
+
+            @include for-small-screens {
+                width: 50%;
+                margin-left: 10px;
+            }
+        }
+
+        &-date {
+            width: $size-100;
+            padding-left: 10px;
+        }
+
+        &-select {
+            margin-left: 0 !important;
+            width: 20% !important;
         }
     }
 
@@ -74,29 +102,53 @@
         width: 60% !important;
         height: 100px !important;
         padding: 10px;
+
+        @include for-small-screens {
+            margin-left: 0 !important;
+            width: $size-100 !important;
+        }
     }
 
-    .slick-slider {
-        width: $size-booking;
-    }
+    .slick {
+        &-slider {
+            width: $size-booking;
 
-    .slick-next,
-    .slick-prev {
-        background: $color-red-primary;
-        border-radius: 50%;
+            @include for-small-screens {
+                width: 200px;
+            }
+        }
 
-        &::before {
+        &-next,
+        &-prev {
+            width: 20px;
+            height: 20px;
             background: $color-red-primary;
             border-radius: 50%;
-            @include flex-align-centered;
-            justify-content: center;
+
+            &::before {
+                font-size: 20px;
+                background: $color-red-primary;
+                border-radius: 50%;
+                @include flex-align-centered;
+                justify-content: center;
+            }
+
+            @include for-small-screens {
+                display: none !important;
+            }
         }
+
     }
 
     .venue-image {
         width: $size-booking;
         height: $size-booking;
         object-fit: cover;
+
+        @include for-small-screens {
+            width: 200px;
+            height: 200px;
+        }
     }
 
     .react-datepicker-wrapper {
@@ -106,41 +158,41 @@
         & > * {
             height: $size-100;
         }
-    }
 
-    .booking-date {
-        width: $size-100;
-        padding-left: 10px;
-    }
-
-    .booking-select {
-        margin-left: 0 !important;
-        width: 20% !important;
-    }
-
-    .info-tooltip {
-        height: $size-100;
-        @include flex-align-centered;
-    }
-
-    .info-icon {
-        margin: 0 10px;
-        height: $size-50;
-        color: $color-grey-support;
-
-        &:hover {
-            color: $color-red-primary;
+        @include for-small-screens {
+            width: 50%;
         }
     }
 
-    .info-text {
-        height: 75%;
-        border-radius: 7px;
-        opacity: 95%;
-        background: lighten($color-black-accent, 5%);
-        color: $color-white;
-        @include flex-align-centered;
-        padding: 0 10px;
+    .info {
+        &-tooltip {
+            height: $size-100;
+            @include flex-align-centered;
+        }
+
+        &-icon {
+            margin: 0 10px;
+            height: $size-50;
+            color: $color-grey-support;
+
+            &:hover {
+                color: $color-red-primary;
+            }
+
+            @include for-small-screens {
+                display: none;
+            }
+        }
+
+        &-text {
+            height: 75%;
+            border-radius: 7px;
+            opacity: 95%;
+            background: lighten($color-black-accent, 5%);
+            color: $color-white;
+            @include flex-align-centered;
+            padding: 0 10px;
+        }
     }
 
     input[type="submit"] {
