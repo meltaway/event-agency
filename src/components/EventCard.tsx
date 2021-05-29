@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useQuery} from "react-query";
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -16,6 +16,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 import '../scss/blocks/events.scss';
 import '../scss/blocks/modal.scss';
+import translate from './../json/translate_config.json';
+
 library.add(fas, far)
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,11 +52,12 @@ function formatReview(text, event_id) {
     }
 }
 
-export default function EventCard(props) {
+export default function EventCard({id, event, image, type, location, date, description, key, loc}) {
     const classes = useStyles();
     const [expanded, setExpanded] = useState<boolean>(false);
     const [open, openModal] = useState<Boolean>(false);
     const [scroll, setScroll] = useState(true);
+    const [locale, setLocale] = useState<string>('en-US');
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -63,6 +66,10 @@ export default function EventCard(props) {
     const handleModal = () => {
         openModal(!open)
     };
+
+    useEffect(() => {
+        setLocale(loc);
+    }, [loc]);
 
     const { isLoading, error, data } = useQuery("all-reviews",
         () => fetch('http://localhost:3001/reviews', {
@@ -80,35 +87,35 @@ export default function EventCard(props) {
         reviews = <ErrorMessage message={"loading events"}/>
 
     const handleSubmit = () => {
-        const text = (document.getElementById("review-text-" + props.id) as HTMLInputElement).value.trim()
+        const text = (document.getElementById("review-text-" + id) as HTMLInputElement).value.trim()
         if (text.length !== 0) {
             fetch('http://localhost:3001/reviews', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formatReview(text, props.id), null, 4)
+                body: JSON.stringify(formatReview(text,  id), null, 4)
             }).then(response => response.json())
         }
     }
 
     return (
-        <Card className={"card"} data-id={props.id} key={props.id}>
+        <Card className={"card"} data-id={ id} key={ id}>
             <div>
                 <CardHeader
                     className={"card-header"}
-                    title={<p className={"event-title"}><FontAwesomeIcon icon={['far', 'star']}/>{props.event}</p>}
+                    title={<p className={"event-title"}><FontAwesomeIcon icon={['far', 'star']}/>{ event}</p>}
                     subheader={
                         <div>
-                            <p className={"event-location"}><FontAwesomeIcon icon={['fas', 'map-marker-alt']}/>{props.location}</p>
-                            <p className={"event-date"}><FontAwesomeIcon icon={['fas', 'calendar-day']}/>{props.date}</p>
+                            <p className={"event-location"}><FontAwesomeIcon icon={['fas', 'map-marker-alt']}/>{ location}</p>
+                            <p className={"event-date"}><FontAwesomeIcon icon={['fas', 'calendar-day']}/>{ date}</p>
                         </div>
                     }
                 />
                 <CardContent className={"card-content"}>
-                    <div style={{background: `rgba(0, 0, 0, 0) url(${props.image}) no-repeat scroll center center`}}
+                    <div style={{background: `rgba(0, 0, 0, 0) url(${ image}) no-repeat scroll center center`}}
                          className={"event-image"} />
-                    {/*<p className={"event-description"}>{props.description}</p>*/}
+                    {/*<p className={"event-description"}>{ description}</p>*/}
                 </CardContent>
             </div>
             <CardActions disableSpacing className={"card-actions"}>
@@ -133,7 +140,7 @@ export default function EventCard(props) {
                 <CardContent>
                     {
                         reviews ? reviews :
-                        data.filter((obj) => obj.event_id === props.id)
+                        data.filter((obj) => obj.event_id ===  id)
                             .map((obj) => {
                                 return <q className="review" key={obj.id}>{obj.text}</q>
                             })
@@ -154,7 +161,7 @@ export default function EventCard(props) {
                 preventScroll={false}
             >
                 <div className={"review-header"}>
-                    <p>Submit a review</p>
+                    <p>{translate[locale]["review_header"]}</p>
                     <IconButton
                         aria-label="close review modal"
                         onClick={handleModal}
@@ -164,19 +171,19 @@ export default function EventCard(props) {
                     </IconButton>
                 </div>
                 <div className={"review-event-info"}>
-                    <p>This is the event you will be leaving a review for:</p>
-                    <p>Event: {props.event} ({props.type})</p>
-                    <p>Location: {props.location}</p>
-                    <p>Date: {props.date}</p>
+                    <p>{translate[locale]["review_explain_info"]}:</p>
+                    <p>{translate[locale]["event_field_label"]}: { event} ({ type})</p>
+                    <p>{translate[locale]["location_field_label"]}: { location}</p>
+                    <p>{translate[locale]["date_field_label"]}: { date}</p>
                 </div>
                 <form className={"review-form"}>
                     <div className={"review-container"}>
-                        <label htmlFor={"review-text"}>Write your review here:</label>
-                        <textarea name={"review-text"} id={"review-text-" + props.id}/>
+                        <label htmlFor={"review-text"}>{translate[locale]["review_explain_text"]}:</label>
+                        <textarea name={"review-text"} id={"review-text-" + id} placeholder={translate[locale]["note_field_placeholder"]}/>
                     </div>
                     <div>
-                        <button onClick={handleModal}>Cancel</button>
-                        <input type={"submit"} value={"Submit"} onClick={handleSubmit}/>
+                        <button onClick={handleModal}>{translate[locale]["cancel"]}</button>
+                        <input type={"submit"} value={translate[locale]["submit"]} onClick={handleSubmit}/>
                     </div>
                 </form>
             </ReactModal>

@@ -1,20 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Select, { components } from 'react-select';
+import translate from './../json/translate_config.json';
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
-import {far} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-library.add(fas, far)
-
-const options = [
-    { value: 'wedding', label: 'Wedding Ceremony' },
-    { value: 'prom', label: 'High School Prom' },
-    { value: 'corporate_party', label: 'Corporate Party' },
-    { value: 'presentation', label: 'Product Presentation' },
-    { value: 'convention', label: 'Convention' },
-];
+library.add(fas)
 
 const customSelectStyles = {
     option: (provided, state) => ({
@@ -56,7 +48,7 @@ const customSelectStyles = {
     }),
 }
 
-const DropdownIndicator = props => {
+const DropdownIndicator = (props) => {
     return (
         components.DropdownIndicator && (
             <components.DropdownIndicator {...props}>
@@ -70,17 +62,30 @@ const DropdownIndicator = props => {
     );
 };
 
-export default function TypeSelect({ filterCheck, getType }) {
+export default function TypeSelect({ filterCheck, getType, loc }) {
     const [selected, setSelected] = useState<String>(null)
+    const [locale, setLocale] = useState<string>('en-US');
+
+    useEffect(() => {
+        setLocale(loc);
+    }, [loc]);
 
     const handleSelectionChange = (selectedOption) => {
         setSelected(selectedOption)
         getType(selectedOption)
     }
 
+    const options = [
+        { value: 'wedding', label: translate[locale]['Wedding Ceremony'] },
+        { value: 'prom', label: translate[locale]['High School Prom'] },
+        { value: 'corporate_party', label: translate[locale]['Corporate Party'] },
+        { value: 'presentation', label: translate[locale]['Product Presentation'] },
+        { value: 'convention', label: translate[locale]['Convention'] },
+    ];
+
     return (
         <Select options={options} styles={customSelectStyles}
-                placeholder={"Type..."}
+                placeholder={translate[locale]["type_placeholder"]}
                 components={{ DropdownIndicator }}
                 onChange={handleSelectionChange}
                 value={selected}

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 
 // blocks
-import './css/normalize.css'
+import './css/normalize.css';
+import translate from './json/translate_config.json';
 import NavBar from './components/NavBar';
 import EventCard from './components/EventCard';
 import Gallery from './components/Gallery';
@@ -17,14 +18,19 @@ import {fab} from "@fortawesome/free-brands-svg-icons";
 
 library.add(fas, fab)
 
-function filterEvents(array: Array<any>, filter: String, date: Date, type: any | null) {
+function searchEvents(array: Array<any>, query: string) {
+    return array.filter((e) => e.event.includes(query) || e.description.includes(query) || e.location.includes(query))
+}
+
+function filterEvents(array: Array<any>, filter: String, date: Date, type: any | null, query: string | null) {
+    const toFilter = query ? searchEvents((type ? array.filter((e) => e.type === type.label) : array), query) : (type ? array.filter((e) => e.type === type.label) : array);
     switch(filter) {
         case 'before':
-            return (type ? array.filter((e) => e.type === type.label) : array).filter((e) => new Date(e.date) <= date)
+            return toFilter.filter((e) => new Date(e.date) <= date)
         case 'after':
-            return (type ? array.filter((e) => e.type === type.label) : array).filter((e) => new Date(e.date) >= date)
+            return toFilter.filter((e) => new Date(e.date) >= date)
         default:
-            return (type ? array.filter((e) => e.type === type.label) : array);
+            return toFilter;
     }
 }
 
@@ -39,7 +45,9 @@ function App() {
     const [filter, setFilter] = useState<String>('dont');
     const [date, setDate] = useState<Date>(new Date());
     const [checkedType, setCheckedType] = useState<boolean>(false);
-    const [type, setType] = useState<String>(null)
+    const [type, setType] = useState<String>(null);
+    const [search, setSearch] = useState<string>(null);
+    const [locale, setLocale] = useState<string>('en-US');
 
     const { isLoading, error, data } = useQuery("all-events",
         () => fetch('http://localhost:3001/events', {
@@ -86,41 +94,43 @@ function App() {
         setType(selectedOption)
     }
 
+    const getSelectedLocale = (loc) => {
+        setLocale(loc);
+    }
+
+    const getSearch = (str) => {
+        setSearch(str);
+    }
+
     return (
         <div className="App">
             <header>
-                <NavBar/>
+                <NavBar getLocale={getSelectedLocale}/>
             </header>
             <main>
                 <section id="gallery">
-                    <Gallery/>
+                    <Gallery loc={locale}/>
                 </section>
                 <section id="about">
-                    <h2>Who We Are</h2>
-                    <h3>Forget party planning. We specialize in the art of event reinvention.</h3>
-                    <p>At <span style={{color: '#a82548'}}>Eventify</span>, we do more than just event planning or event
-                        management. We take a stuffy corporate meeting or conference and make it feel like the only
-                        event in town. Not only do we personally handle all logistics and organization, but we also
-                        seamlessly blend that with carefully thought-out event concepts that engage your clients and
-                        employees. A modern art affair, a carnival-themed seminar, a Latin nightclub reception – we’ve
-                        done them all. Because as a leading full-service destination management company (DMC), we don’t
-                        just create programs; we create experiences.</p>
-                    <p>At <span style={{color: '#a82548'}}>Eventify</span>, “Built Around You” isn’t just a tagline.
-                        It’s our DNA.</p>
-                    <p>We have the talent, tools, and drive that you expect to turn your event into an unforgettable
-                        experience.</p>
+                    <h2>{translate[locale]["Who We Are"]}</h2>
+                    <h3>{translate[locale]["h3_about"]}</h3>
+                    <p>{translate[locale]["at_eventify"]} <span style={{color: '#a82548'}}>Eventify</span>, {translate[locale]["p_about_1"]}</p>
+                    <p>{translate[locale]["at_eventify"]} <span style={{color: '#a82548'}}>Eventify</span>, {translate[locale]["p_about_2"]}</p>
+                    <p>{translate[locale]["p_about_3"]}</p>
                 </section>
                 <section id="events">
-                    <h2>What We Do</h2>
+                    <h2>{translate[locale]["What We Do"]}</h2>
                     <Filters getRadioFilter={getRadioFilter}
                              getSelectedDate={getSelectedDate}
                              getChecked={getCheckedFilter}
                              getSelected={getSelectedType}
+                             getSearch={getSearch}
+                             loc={locale}
                     />
                     <div className={"events-container"}>
                         {
                             events ? events :
-                                sortEventsByDate(filterEvents(data, filter, date, checkedType ? type : null))
+                                sortEventsByDate(filterEvents(data, filter, date, checkedType ? type : null, search ? search : null))
                                     .slice(offset, offset + PER_PAGE)
                                     .map((e) =>
                                         <EventCard
@@ -132,18 +142,19 @@ function App() {
                                             date={e.date}
                                             description={e.description.split('.')[0].split(',')[0] + '.'}
                                             key={e.id}
+                                            loc={locale}
                                         />
                                     )
                         }
                     </div>
                     <div className={"event-btn-container"}>
-                        <button onClick={prevPage} disabled={!page}>Back</button>
-                        <button onClick={nextPage}>Next</button>
+                        <button onClick={prevPage} disabled={!page}>{translate[locale]["back"]}</button>
+                        <button onClick={nextPage}>{translate[locale]["next"]}</button>
                     </div>
                 </section>
                 <section id="booking">
-                    <h2>Book an Event</h2>
-                    <BookingForm />
+                    <h2>{translate[locale]["booking_title"]}</h2>
+                    <BookingForm loc={locale}/>
                 </section>
             </main>
             <footer>
@@ -154,14 +165,14 @@ function App() {
                             <a href="#"><p>Eventify</p></a>
                         </div>
                         <div className="contact-info">
-                            <p>37, Prosp. Peremohy, Kyiv, Ukraine, 03056</p>
-                            <p>8:00-20:00 M-F</p>
-                            <p>T: +380 44 204 9494</p>
-                            <p>M: mail@eventify.world</p>
+                            <p>{translate[locale]["address"]}</p>
+                            <p>8:00-20:00 {translate[locale]["timetable"]}</p>
+                            <p>{translate[locale]["phone"]}: +380 44 204 9494</p>
+                            <p>{translate[locale]["email"]}: mail@eventify.world</p>
                         </div>
                     </div>
                     <div className="map">
-                        <p>Find us here:</p>
+                        <p>{translate[locale]["map_explain"]}</p>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1270.2703579710123!2d30.46094!3d50.449655!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce82b9d930e5%3A0x8b1e1e0c5175e2f!2z0JrQn9CGINGW0LwuINC60L7RgNC_0YPRgSDihJYx!5e0!3m2!1sru!2sua!4v1620398191470!5m2!1sru!2sua"
                             width="400" height="300" style={{border: 0,}} allowFullScreen={false} loading="lazy">
@@ -174,8 +185,8 @@ function App() {
                     {/*</div>*/}
                 </div>
                 <div className="copyright">
-                    <p>Copyright © 2021 Eventify, All rights reserved.</p>
-                    <p>Website by Kateryna Pryshchenko</p>
+                    <p>{translate[locale]["copyright"]}</p>
+                    <p>{translate[locale]["website_by"]}</p>
                 </div>
             </footer>
         </div>

@@ -69,3 +69,7 @@ footer {
   background: lighten($color-black-accent, 10%);
   color: $color-white;
 }
+
+.ReactQueryDevtools {
+  display: none;
+}

@@ -4,8 +4,15 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import TypeSelect from "./TypeSelect";
+import translate from './../json/translate_config.json';
+
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {fas} from "@fortawesome/free-solid-svg-icons";
+import {far} from "@fortawesome/free-regular-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+library.add(fas, far)
 
 const theme = createMuiTheme({
     palette: {
@@ -14,16 +21,20 @@ const theme = createMuiTheme({
     },
 });
 
-export default function Filters({ getSelectedDate, getRadioFilter, getChecked, getSelected }) {
+export default function Filters({ getSelectedDate, getRadioFilter, getChecked, getSelected, getSearch, loc }) {
     const [value, setValue] = useState<String>('dont');
     const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
     const [typeFilter, setTypeFilter] = useState<Boolean>(false);
     const [typeSelection, setTypeSelection] = useState<String>(null);
+    const [search, setSearch] = useState<string>(null);
+    const [locale, setLocale] = useState<string>('en-US');
 
     useEffect(() => {
         getSelectedDate(selectedDate);
         getRadioFilter(value);
-    }, [value, selectedDate, getRadioFilter, getSelectedDate])
+        getSearch(search);
+        setLocale(loc);
+    }, [value, selectedDate, getRadioFilter, getSelectedDate, getSearch, loc])
 
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue((event.target as HTMLInputElement).value);
@@ -47,7 +58,7 @@ export default function Filters({ getSelectedDate, getRadioFilter, getChecked, g
         <MuiThemeProvider theme={theme}>
             <div className={"filter-container"}>
                 <FormControl component="fieldset" className={"event-filters"}>
-                    <FormLabel component="legend" className={"filter-legend"}>Sort events by date</FormLabel>
+                    <FormLabel component="legend" className={"filter-legend"}>{translate[locale]["filter_sort_label"]}</FormLabel>
                     <div className={"filter-input-container"}>
                         <DatePicker selected={selectedDate}
                                     id={"filter-date"}
@@ -58,25 +69,34 @@ export default function Filters({ getSelectedDate, getRadioFilter, getChecked, g
                             <FormControlLabel value="before"
                                               control={<Radio color={"primary"}/>}
                                               id={"filter-date-before"}
-                                              label={<Typography className={"filter-label"}>Before</Typography>} />
+                                              label={<Typography className={"filter-label"}>{translate[locale]["before_filter"]}</Typography>} />
                             <FormControlLabel value="after"
                                               control={<Radio color={"primary"}/>}
                                               id={"filter-date-after"}
-                                              label={<Typography className={"filter-label"}>After</Typography>} />
+                                              label={<Typography className={"filter-label"}>{translate[locale]["after_filter"]}</Typography>} />
                             <FormControlLabel value="dont"
                                               control={<Radio color={"primary"}/>}
                                               id={"filter-date-dont"}
-                                              label={<Typography className={"filter-label"}>Don't sort</Typography>} />
+                                              label={<Typography className={"filter-label"}>{translate[locale]["dont_filter"]}</Typography>} />
                         </RadioGroup>
                     </div>
                 </FormControl>
                 <FormControl component="fieldset" className={"event-filters"}>
-                    <FormLabel component="legend" className={"filter-legend"}>Filter events by type</FormLabel>
+                    <FormLabel component="legend" className={"filter-legend"}>{translate[locale]["filter_type_label"]}</FormLabel>
                     <div className={"filter-input-container"}>
                         <Checkbox checked={!!typeFilter} onChange={handleCheckboxChange} name="type-filter" color={"primary"}/>
-                        <TypeSelect filterCheck={!typeFilter} getType={handleSelectionChange}/>
+                        <TypeSelect filterCheck={!typeFilter} getType={handleSelectionChange} loc={locale}/>
                     </div>
                 </FormControl>
+                <FormControl component="fieldset" className={"event-filters"}>
+                    <FormLabel component="legend" className={"filter-legend"}>{translate[locale]["search_label"]}</FormLabel>
+                    <div className={"filter-input-container"}>
+                        <input type={"text"} placeholder={translate[locale]["search_placeholder"]}
+                               onChange={(e) => setSearch(e.target.value)}/>
+                        <button onClick={() => getSearch(search)}><FontAwesomeIcon icon={["fas", "search"]}/></button>
+                    </div>
+                </FormControl>
+
             </div>
         </MuiThemeProvider>
     );

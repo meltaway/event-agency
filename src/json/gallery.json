@@ -2,27 +2,32 @@
   "images": [
     {
       "title": "Wedding Ceremony",
-      "description": "Define your wedding style and we will match you with local vendors. We construct a personalized budget and checklist, gather guest information and we do anything else in our power to make your special day unforgettable.",
+      "description_en": "Define your wedding style and we will match you with local vendors. We construct a personalized budget and checklist, gather guest information and we do anything else in our power to make your special day unforgettable.",
+      "description_ua": "Визначте свій стиль весілля, і ми підберемо вам місцевих постачальників. Ми складемо персональний бюджет та контрольний список, зберемо інформацію про гостей та зробимо все, що в наших силах, щоб зробити ваш особливий день незабутнім.",
       "image": "/images/wedding.jpg"
     },
     {
       "title": "High School Prom",
-      "description": "We always put the wants and needs of students first - they are the stars of the show, after all! We will arrange for a DJ, a suitable venue and all other accommodations to make you never forget this milestone in your life.",
+      "description_en": "We always put the wants and needs of students first - they are the stars of the show, after all! We will arrange for a DJ, a suitable venue and all other accommodations to make you never forget this milestone in your life.",
+      "description_ua": "Ми завжди ставимо бажання та потреби учнів на перше місце - врешті-решт, вони зірки цього шоу! Ми домовимося про ді-джея, відповідне місце та всі інші зручності, щоб ви ніколи не забули цю віху в своєму житті.",
       "image": "/images/prom.jpg"
     },
     {
       "title": "Corporate Party",
-      "description": "Whether you need to wind down after a busy quarter or engage in some team-building, we've got your back! Let us handle the information gathering, as well as invitation sending, and the party will be in full swing before you know it!",
+      "description_en": "Whether you need to wind down after a busy quarter or engage in some team-building, we've got your back! Let us handle the information gathering, as well as invitation sending, and the party will be in full swing before you know it!",
+      "description_ua": "Незалежно від того, чи потрібно вам розслабитись після напруженого кварталу чи брати участь у тімбілдингу, ми вас підтримаємо! Дозвольте нам взяти на себе збір інформації, а також надсилання запрошень, і вечірка буде в самому розпалі, перш ніж ви це помітите!",
       "image": "/images/corporate_party.jpg"
     },
     {
       "title": "Product Presentation",
-      "description": "Have you ever dreamed of becoming Steve Jobs? We offer you an opportunity to impress and influence your potential clients with a professional presentation at any venue you can think of.",
+      "description_en": "Have you ever dreamed of becoming Steve Jobs? We offer you an opportunity to impress and influence your potential clients with a professional presentation at any venue you can think of.",
+      "description_ua": "Ви коли-небудь мріяли стати Стівом Джобсом? Ми пропонуємо вам можливість справити враження та вплинути на своїх потенційних клієнтів за допомогою професійної презентації в будь-якому місці, яке ви можете придумати.",
       "image": "/images/presentation.jpg"
     },
     {
       "title": "Convention",
-      "description": "As your community grows, you will need a place to meet and participate in various fun activities. We will arrange for a large venue with or without catering and make your convention welcoming to all!",
+      "description_en": "As your community grows, you will need a place to meet and participate in various fun activities. We will arrange for a large venue with or without catering and make your convention welcoming to all!",
+      "description_ua": "У міру зростання вашої спільноти вам буде потрібно місце для зустрічей та участі у різноманітних цікавих заходах. Ми організуємо велике приміщення з харчуванням або без, і зробимо ваш фестиваль приємним для всіх!",
       "image": "/images/convention.jpg"
     }
   ]

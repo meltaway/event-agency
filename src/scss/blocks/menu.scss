@@ -36,6 +36,7 @@ nav {
 
 .menu {
   font-size: 1.2em;
+
   @include flex-align-centered;
 
   a {

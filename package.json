@@ -59,7 +59,6 @@
     ]
   },
   "devDependencies": {
-    "@google-cloud/translate": "^6.2.1",
     "@types/react-js-pagination": "^3.0.3",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
@@ -71,7 +70,6 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "js-translator": "^4.0.0",
     "json-server": "^0.16.3",
     "react-datepicker": "^3.8.0",
     "react-modal": "^3.13.1",

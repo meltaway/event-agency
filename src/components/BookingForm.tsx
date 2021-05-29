@@ -1,8 +1,9 @@
-import React, {isValidElement, useState} from 'react';
+import React, {isValidElement, useEffect, useState} from 'react';
 import Slider from "react-slick";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import gallery from "./../json/gallery.json";
+import translate from './../json/translate_config.json';
 
 import './../scss/blocks/booking.scss'
 
@@ -12,14 +13,6 @@ import {far} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 library.add(fas, far)
-
-const options = [
-    { value: 'wedding', label: 'Wedding Ceremony' },
-    { value: 'prom', label: 'High School Prom' },
-    { value: 'corporate_party', label: 'Corporate Party' },
-    { value: 'presentation', label: 'Product Presentation' },
-    { value: 'convention', label: 'Convention' },
-];
 
 function validateBooking(event: String, date: Date, location: String, type: String, venue: Number, note: String) {
     if (!!event && !!date && !!location && !!type && !!venue)
@@ -45,7 +38,7 @@ const InfoTooltip = ({label}) => {
     )
 }
 
-export default function BookingForm() {
+export default function BookingForm({loc}) {
     const today = new Date();
     today.setHours(0,0,0);
 
@@ -55,47 +48,60 @@ export default function BookingForm() {
     const [type, setType] = useState<string | null>(null);
     const [venue, setVenue] = useState<Number | null>(0);
     const [note, setNote] = useState<string | null>(null);
+    const [locale, setLocale] = useState<string>('en-US');
 
     const handleDateChange = (date: Date | null) => {
         if (date >= today)
             setSelectedDate(date);
         else
-            alert("Note: you cannot set your event date earlier than today!");
+            alert(translate[locale]['date_picker_alert']);
     };
+
+    useEffect(() => {
+        setLocale(loc);
+    }, [loc])
+
+    const options = [
+        { value: 'wedding', label: translate[locale]['Wedding Ceremony'] },
+        { value: 'prom', label: translate[locale]['High School Prom'] },
+        { value: 'corporate_party', label: translate[locale]['Corporate Party'] },
+        { value: 'presentation', label: translate[locale]['Product Presentation'] },
+        { value: 'convention', label: translate[locale]['Convention'] },
+    ];
 
     return (
         <form className={"booking-form"}>
-            <p>Please fill in all the fields not marked optional.</p>
+            <p>{translate[locale]['booking_explain']}</p>
             <div className={"booking-field-container"}>
-                <label>Event name</label>
-                <input type={"text"} placeholder={"Event..."}
+                <label>{translate[locale]['event_field_label']}</label>
+                <input type={"text"} placeholder={translate[locale]['event_field_placeholder']}
                        className={"booking-field booking-input-field"}
                        onChange={(e) => setEvent(e.target.value)}/>
-                <InfoTooltip label={"The title of your event."}/>
+                <InfoTooltip label={translate[locale]['event_field_info']}/>
             </div>
             <div className={"booking-field-container"}>
-                <label>Date</label>
+                <label>{translate[locale]['date_field_label']}</label>
                 <DatePicker selected={selectedDate}
                             className={"booking-date booking-field"}
                             onChange={(date) => handleDateChange(date)} />
-                <InfoTooltip label={"The day of the event. Has to be today or later!"}/>
+                <InfoTooltip label={translate[locale]['date_field_info']}/>
             </div>
             <div className={"booking-field-container"}>
-                <label>Location</label>
-                <input type={"text"} placeholder={"Address..."}
+                <label>{translate[locale]['location_field_label']}</label>
+                <input type={"text"} placeholder={translate[locale]['location_field_placeholder']}
                        className={"booking-field booking-input-field"}
                        onChange={(e) => setLocation(e.target.value)}/>
-                <InfoTooltip label={"The address of the event."}/>
+                <InfoTooltip label={translate[locale]['location_field_info']}/>
             </div>
             <div className={"booking-field-container"}>
-                <label>Type</label>
-                <input type={"text"} placeholder={"Type..."}
+                <label>{translate[locale]['type_field_label']}</label>
+                <input type={"text"} placeholder={translate[locale]['type_field_placeholder']}
                        className={"booking-field booking-input-field"}
                        onChange={(e) => setType(e.target.value)}/>
-                <InfoTooltip label={"We recommend putting \"wedding\", \"prom\", \"corporate party\", \"presentation\" or \"convention\"."}/>
+                <InfoTooltip label={translate[locale]['type_field_info']}/>
             </div>
             <div className={"booking-field-container"}>
-                <label>Venue <InfoTooltip label={"What you would like the venue to look like."}/></label>
+                <label>{translate[locale]['venue_field_label']}<InfoTooltip label={translate[locale]['venue_field_info']}/></label>
                 <Slider dots={true}
                         infinite={true}
                         speed={500}
@@ -112,11 +118,11 @@ export default function BookingForm() {
                 </Slider>
             </div>
             <div className={"booking-field-container"}>
-                <p>Anything else we should know? Leave us a note! (optional)</p>
-                <textarea className={"booking-field"} placeholder={"Note..."}
+                <p>{translate[locale]['note_field_label']}</p>
+                <textarea className={"booking-field"} placeholder={translate[locale]['note_field_placeholder']}
                           onChange={(e) => setNote(e.target.value)}/>
             </div>
-            <input type={"submit"} value={"Submit"}/>
+            <input type={"submit"} value={translate[locale]['submit']}/>
         </form>
     );
 };

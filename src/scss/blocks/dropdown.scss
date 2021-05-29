@@ -1,0 +1,30 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.dropdown-container {
+    margin: 0 1.5em;
+    cursor: pointer;
+    @include flex-align-centered;
+    justify-content: center;
+}
+
+.dropdown-indicator {
+    margin-left: 10px;
+}
+
+.dropdown-display {
+    position: absolute;
+    background: $color-red-primary;
+    width: 80px;
+    top: 80px;
+}
+
+.dropdown-children {
+    & > * {
+        padding: 10px;
+        &:hover {
+            background: darken($color-red-primary, 10%);
+            cursor: pointer;
+        }
+    }
+}

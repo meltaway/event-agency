@@ -60,12 +60,47 @@
   }
 }
 .event-filters:nth-child(2) {
-  margin-left: -120px;
+  width: 40%;
+  margin-left: -100px;
 }
 @media only screen and (max-width: 768px) {
   .event-filters:nth-child(2) {
     margin-left: 0;
   }
+}
+.event-filters:nth-child(3) {
+  width: 30%;
+  margin-left: -120px;
+}
+@media only screen and (max-width: 768px) {
+  .event-filters:nth-child(3) {
+    margin-left: 0;
+  }
+}
+.event-filters:nth-child(3) input[type=text] {
+  border: 2px solid #cfc6c2;
+  outline: #cfc6c2;
+  border-radius: 5px;
+  height: 42px;
+  padding: 8px 18px;
+  font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  font-size: 1em;
+}
+.event-filters:nth-child(3) input[type=text]:hover {
+  border-color: #a82548;
+  outline: #a82548;
+  cursor: pointer;
+}
+.event-filters:nth-child(3) button {
+  margin-left: 10px;
+  background: #a82548;
+  border-radius: 4px;
+  border: none;
+  width: 42px;
+  color: #fff;
+}
+.event-filters:nth-child(3) button:hover {
+  background: #7e1c36;
 }
 .event-filters .filter-legend {
   font-family: "Rubik", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
@@ -77,7 +112,7 @@
 .event-filters .filter-input-container {
   display: flex;
   margin-top: 15px;
-  width: 80%;
+  width: 100%;
 }
 @media only screen and (max-width: 768px) {
   .event-filters .filter-input-container {
