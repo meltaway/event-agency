@@ -13,6 +13,7 @@
 @media only screen and (max-width: 768px) {
   .booking-form {
     width: 70%;
+    margin-bottom: 30%;
   }
 }
 .booking-form .booking-field-container {

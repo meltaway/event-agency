@@ -25,10 +25,6 @@
   background-color: rgba(82, 69, 64, 0.75);
 }
 
-.no-scroll {
-  overflow: hidden;
-}
-
 .review {
   &-header {
     @include flex-align-centered;

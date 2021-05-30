@@ -1,22 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import {useQuery} from "react-query";
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import ReactModal from 'react-modal';
+
+import { LoadingMessage, ErrorMessage } from './Messages';
+import {formatReview} from "../utils/review";
+
 import clsx from 'clsx';
+import axios from "axios";
+
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { IconButton, Collapse, CardActions, CardContent, CardHeader, Card } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
-import ReactModal from 'react-modal';
-import { LoadingMessage, ErrorMessage } from './Messages';
+
+import translate from './../json/translate_config.json';
+
+import '../scss/blocks/events.scss';
+import '../scss/blocks/eventcard.scss';
+import '../scss/blocks/modal.scss';
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {far} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
-import '../scss/blocks/events.scss';
-import '../scss/blocks/modal.scss';
-import translate from './../json/translate_config.json';
 
 library.add(fas, far)
 
@@ -35,37 +42,13 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-function makeID() {
-    let result = ''
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    for (let i = 0; i < 2; i++)
-        result += chars.charAt(Math.floor(Math.random() * chars.length))
-    result += Math.random().toString().substr(2, 11)
-    return result
-}
-
-function formatReview(text, event_id) {
-    return {
-        'id': makeID(),
-        'text': text,
-        'event_id': event_id
-    }
-}
-
 export default function EventCard({id, event, image, type, location, date, description, key, loc}) {
     const classes = useStyles();
     const [expanded, setExpanded] = useState<boolean>(false);
     const [open, openModal] = useState<Boolean>(false);
     const [scroll, setScroll] = useState(true);
     const [locale, setLocale] = useState<string>('en-US');
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
-    const handleModal = () => {
-        openModal(!open)
-    };
+    const [text, setText] = useState<string>("");
 
     useEffect(() => {
         setLocale(loc);
@@ -86,16 +69,30 @@ export default function EventCard({id, event, image, type, location, date, descr
     else if (error)
         reviews = <ErrorMessage message={"loading events"}/>
 
-    const handleSubmit = () => {
-        const text = (document.getElementById("review-text-" + id) as HTMLInputElement).value.trim()
-        if (text.length !== 0) {
-            fetch('http://localhost:3001/reviews', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formatReview(text,  id), null, 4)
-            }).then(response => response.json())
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
+
+    const handleModal = () => {
+        openModal(!open)
+    };
+
+    const toggleScroll = () => {
+        setScroll(!scroll);
+        scroll ? document.body.classList.add('no-scroll') : document.body.classList.remove('no-scroll');
+    }
+
+    const submitReview = (e) => {
+        e.preventDefault();
+        const review = formatReview(text, id);
+        if (!!text) {
+            axios.post('http://localhost:3001/reviews', { review })
+                .then(res=>{
+                    setText("");
+                    openModal(false);
+                })
+        } else {
+            alert(translate[locale]['review_error']);
         }
     }
 
@@ -140,15 +137,17 @@ export default function EventCard({id, event, image, type, location, date, descr
                 <CardContent>
                     {
                         reviews ? reviews :
-                        data.filter((obj) => obj.event_id ===  id)
+                        data.filter((obj) => obj.review.event_id ===  id)
                             .map((obj) => {
-                                return <q className="review" key={obj.id}>{obj.text}</q>
+                                return <q className="review" key={obj.id}>{obj.review.text}</q>
                             })
                     }
                 </CardContent>
             </Collapse>
             <ReactModal
                 isOpen={open}
+                onAfterOpen={toggleScroll}
+                onAfterClose={toggleScroll}
                 onRequestClose={handleModal}
                 contentLabel={"Modal window with reviews for the event"}
                 className={"modal-container"}
@@ -176,14 +175,17 @@ export default function EventCard({id, event, image, type, location, date, descr
                     <p>{translate[locale]["location_field_label"]}: { location}</p>
                     <p>{translate[locale]["date_field_label"]}: { date}</p>
                 </div>
-                <form className={"review-form"}>
+                <form className={"review-form"} onSubmit={submitReview}>
                     <div className={"review-container"}>
                         <label htmlFor={"review-text"}>{translate[locale]["review_explain_text"]}:</label>
-                        <textarea name={"review-text"} id={"review-text-" + id} placeholder={translate[locale]["note_field_placeholder"]}/>
+                        <textarea name={"review-text"} id={"review-text-" + id}
+                                  value={text}
+                                  onChange={(e) => setText(e.target.value)}
+                                  placeholder={translate[locale]["note_field_placeholder"]}/>
                     </div>
                     <div>
                         <button onClick={handleModal}>{translate[locale]["cancel"]}</button>
-                        <input type={"submit"} value={translate[locale]["submit"]} onClick={handleSubmit}/>
+                        <input type={"submit"} value={translate[locale]["submit"]}/>
                     </div>
                 </form>
             </ReactModal>

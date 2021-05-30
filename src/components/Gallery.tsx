@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import Slider from 'react-animated-slider';
+
+import gallery from './../json/gallery.json'
+import translate from './../json/translate_config.json';
+
 import 'react-animated-slider/build/horizontal.css';
 import '../scss/blocks/gallery.scss';
-import gallery from './../json/gallery.json'
+
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import translate from './../json/translate_config.json';
 
 library.add(fas)
 

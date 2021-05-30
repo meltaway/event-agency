@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import '../scss/blocks/menu.scss'
 import Dropdown from "./Dropdown";
 import translate from './../json/translate_config.json';
+import '../scss/blocks/menu.scss'
 
 const NavBar = ({getLocale}) => {
     const [locale, setLocale] = useState<string>('en-US');

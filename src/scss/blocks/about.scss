@@ -4,5 +4,9 @@
 #about {
   p {
     color: $color-black-accent;
+
+    @include for-small-screens {
+      width: 80%;
+    }
   }
 }

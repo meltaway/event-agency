@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
+import DatePicker from "react-datepicker";
+import TypeSelect from "./TypeSelect";
+
 import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Typography, Checkbox } from '@material-ui/core';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import TypeSelect from "./TypeSelect";
 import translate from './../json/translate_config.json';
+import "react-datepicker/dist/react-datepicker.css";
+import './../scss/blocks/filters.scss';
 
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";

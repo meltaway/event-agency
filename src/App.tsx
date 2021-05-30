@@ -1,44 +1,25 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 
-// blocks
-import './css/normalize.css';
-import translate from './json/translate_config.json';
+import {FacebookShareButton, TelegramShareButton, TumblrShareButton, TwitterShareButton} from "react-share";
+
 import NavBar from './components/NavBar';
 import EventCard from './components/EventCard';
 import Gallery from './components/Gallery';
 import { LoadingMessage, ErrorMessage } from './components/Messages';
 import Filters from './components/Filters'
 import BookingForm from "./components/BookingForm";
+import {filterEvents, sortEventsByDate} from "./utils/events";
 
-// fontawesome
+import translate from './json/translate_config.json';
+import './css/normalize.css';
+
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {fab} from "@fortawesome/free-brands-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 library.add(fas, fab)
-
-function searchEvents(array: Array<any>, query: string) {
-    return array.filter((e) => e.event.includes(query) || e.description.includes(query) || e.location.includes(query))
-}
-
-function filterEvents(array: Array<any>, filter: String, date: Date, type: any | null, query: string | null) {
-    const toFilter = query ? searchEvents((type ? array.filter((e) => e.type === type.label) : array), query) : (type ? array.filter((e) => e.type === type.label) : array);
-    switch(filter) {
-        case 'before':
-            return toFilter.filter((e) => new Date(e.date) <= date)
-        case 'after':
-            return toFilter.filter((e) => new Date(e.date) >= date)
-        default:
-            return toFilter;
-    }
-}
-
-function sortEventsByDate(array: Array<any>) {
-    return array.sort(function(a,b): any{
-        return (new Date(a.date).getTime() - new Date(b.date).getTime());
-    });
-}
 
 function App() {
     const [page, setPage] = useState<number>(0);
@@ -127,7 +108,7 @@ function App() {
                              getSearch={getSearch}
                              loc={locale}
                     />
-                    <div className={"events-container"}>
+                    <div className={"events-container"} style={events ? {display: 'flex', justifyContent: 'center'} : {display: 'grid'}}>
                         {
                             events ? events :
                                 sortEventsByDate(filterEvents(data, filter, date, checkedType ? type : null, search ? search : null))
@@ -178,11 +159,25 @@ function App() {
                             width="400" height="300" style={{border: 0,}} allowFullScreen={false} loading="lazy">
                         </iframe>
                     </div>
-                    {/*<div className="quick-links">*/}
-                    {/*    <a target="_blank" rel="noreferrer" href="https://twitter.com/compose/tweet"><FontAwesomeIcon icon={['fab', 'twitter']} size="3x"/></a>*/}
-                    {/*    <a target="_blank" rel="noreferrer" href="https://www.facebook.com/"><FontAwesomeIcon icon={['fab', 'facebook']} size="3x"/></a>*/}
-                    {/*    <a target="_blank" rel="noreferrer" href="https://www.instagram.com/"><FontAwesomeIcon icon={['fab', 'instagram']} size="3x"/></a>*/}
-                    {/*</div>*/}
+                    <div className="quick-links">
+                        <TwitterShareButton
+                            url={"http://eventify.net"}
+                            title={translate[locale]["share_quote"]}
+                            hashtags={["eventify"]}>
+                            <FontAwesomeIcon icon={['fab', 'twitter']} size="3x"/>
+                        </TwitterShareButton>
+                        <FacebookShareButton
+                            url={"http://eventify.net"}
+                            quote={translate[locale]["share_quote"]}
+                            hashtag={"#eventify"}>
+                            <FontAwesomeIcon icon={['fab', 'facebook']} size="3x"/>
+                        </FacebookShareButton>
+                        <TelegramShareButton
+                            url={"http://eventify.net"}
+                            title={translate[locale]["share_quote"]}>
+                            <FontAwesomeIcon icon={['fab', 'telegram']} size="3x"/>
+                        </TelegramShareButton>
+                    </div>
                 </div>
                 <div className="copyright">
                     <p>{translate[locale]["copyright"]}</p>

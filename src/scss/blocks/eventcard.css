@@ -1,0 +1,31 @@
+.card {
+  padding: 0;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-header {
+  padding: 0 !important;
+}
+.card-header p {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  color: #524540;
+  text-align: left;
+}
+.card-header p svg {
+  margin-right: 10px;
+}
+.card-content {
+  padding: 0 !important;
+  height: 200px !important;
+}
+.card-actions {
+  height: 45px;
+  width: 100%;
+}
+
+/*# sourceMappingURL=eventcard.css.map */

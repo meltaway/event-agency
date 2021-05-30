@@ -44,6 +44,8 @@
     "venue_field_info": "What you would like the venue to look like.",
     "note_field_label": "Anything else we should know? Leave us a note! (optional)",
     "note_field_placeholder": "Note...",
+    "booking_error": "Invalid field values in booking.",
+    "review_error": "Invalid review text.",
     "review_header": "Submit a review",
     "review_explain_info": "This is the event you will be leaving a review for",
     "review_explain_text": "Write your review here",
@@ -55,7 +57,8 @@
     "email": "M",
     "map_explain": "Find us here:",
     "copyright": "Copyright © 2000-2021 Eventify, All rights reserved.",
-    "website_by": "Website by Kateryna Pryshchenko"
+    "website_by": "Website by Kateryna Pryshchenko",
+    "share_quote": "Let me show you Eventify, a great event agency I found!"
   },
   "uk-UA": {
     "Language": "Мова",
@@ -102,6 +105,8 @@
     "venue_field_info": "Яким би ви хотіли бачити місце проведення.",
     "note_field_label": "Ще щось, що ми повинні знати? Залиште нам записку! (необов’язково)",
     "note_field_placeholder": "Текст...",
+    "booking_error": "Неправильно заповнені поля в замовленні.",
+    "review_error": "Неправильно заповнене поле відгука.",
     "review_header": "Надіслати відгук",
     "review_explain_info": "Це подія, про яку ви залишаєте відгук",
     "review_explain_text": "Напишіть свій відгук тут",
@@ -113,6 +118,7 @@
     "email": "ел. пошта",
     "map_explain": "Ми знаходимося тут:",
     "copyright": "Авторське право © 2000-2021 Eventify, Усі права захищені.",
-    "website_by": "Сайт від Катерини Прищенко"
+    "website_by": "Сайт від Катерини Прищенко",
+    "share_quote": "Дозвольте показати вам Eventify, чудове івент-агентство!"
   }
 }

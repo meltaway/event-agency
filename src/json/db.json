@@ -2,253 +2,353 @@
   "reviews": [
     {
       "id": 1,
-      "text": "The box this comes in is 4 mile by 5 inch and weights 19 megaton!",
-      "event_id": 19
+      "review": {
+        "text": "The box this comes in is 4 mile by 5 inch and weights 19 megaton!",
+        "event_id": 19
+      }
     },
     {
       "id": 2,
-      "text": "one of my hobbies is poetry. and when i'm writing poems this works great.",
-      "event_id": 8301
+      "review": {
+        "text": "one of my hobbies is poetry. and when i'm writing poems this works great.",
+        "event_id": 8301
+      }
     },
     {
       "id": 3,
-      "text": "I tried to electrocute it but got sweetmeat all over it.",
-      "event_id": 8118
+      "review": {
+        "text": "I tried to electrocute it but got sweetmeat all over it.",
+        "event_id": 8118
+      }
     },
     {
       "id": 4,
-      "text": "My co-worker Bryton has one of these. He says it looks ragged.",
-      "event_id": 5799
+      "review": {
+        "text": "My co-worker Bryton has one of these. He says it looks ragged.",
+        "event_id": 5799
+      }
     },
     {
       "id": 5,
-      "text": "this Eventify is flirty.",
-      "event_id": 9741
+      "review": {
+        "text": "this Eventify is flirty.",
+        "event_id": 9741
+      }
     },
     {
       "id": 6,
-      "text": "heard about this on ndombolo radio, decided to give it a try.",
-      "event_id": 8659
+      "review": {
+        "text": "heard about this on ndombolo radio, decided to give it a try.",
+        "event_id": 8659
+      }
     },
     {
       "id": 7,
-      "text": "It only works when I'm Martinique.",
-      "event_id": 3000
+      "review": {
+        "text": "It only works when I'm Martinique.",
+        "event_id": 3000
+      }
     },
     {
       "id": 8,
-      "text": "My peacock loves to play with it.",
-      "event_id": 1446
+      "review": {
+        "text": "My peacock loves to play with it.",
+        "event_id": 1446
+      }
     },
     {
       "id": 9,
-      "text": "The box this comes in is 4 yard by 5 inch and weights 12 pound!",
-      "event_id": 5028
+      "review": {
+        "text": "The box this comes in is 4 yard by 5 inch and weights 12 pound!",
+        "event_id": 5028
+      }
     },
     {
       "id": 10,
-      "text": "this Eventify is top-notch.",
-      "event_id": 9536
+      "review": {
+        "text": "this Eventify is top-notch.",
+        "event_id": 9536
+      }
     },
     {
       "id": 11,
-      "text": "This Eventify works considerably well. It recklessly improves my basketball by a lot.",
-      "event_id": 320
+      "review": {
+        "text": "This Eventify works considerably well. It recklessly improves my basketball by a lot.",
+        "event_id": 320
+      }
     },
     {
       "id": 12,
-      "text": "I tried to shred it but got watermelon all over it.",
-      "event_id": 4446
+      "review": {
+        "text": "I tried to shred it but got watermelon all over it.",
+        "event_id": 4446
+      }
     },
     {
       "id": 13,
-      "text": "It only works when I'm Heard Island and McDonald Islands.",
-      "event_id": 3986
+      "review": {
+        "text": "It only works when I'm Heard Island and McDonald Islands.",
+        "event_id": 3986
+      }
     },
     {
       "id": 14,
-      "text": "heard about this on gypsy jazz radio, decided to give it a try.",
-      "event_id": 6228
+      "review": {
+        "text": "heard about this on gypsy jazz radio, decided to give it a try.",
+        "event_id": 6228
+      }
     },
     {
       "id": 15,
-      "text": "This Eventify works excessively well. It speedily improves my baseball by a lot.",
-      "event_id": 9282
+      "review": {
+        "text": "This Eventify works excessively well. It speedily improves my baseball by a lot.",
+        "event_id": 9282
+      }
     },
     {
       "id": 16,
-      "text": "This Eventify works quite well. It romantically improves my golf by a lot.",
-      "event_id": 634
+      "review": {
+        "text": "This Eventify works quite well. It romantically improves my golf by a lot.",
+        "event_id": 634
+      }
     },
     {
       "id": 17,
-      "text": "This Eventify works so well. It delightedly improves my football by a lot.",
-      "event_id": 9794
+      "review": {
+        "text": "This Eventify works so well. It delightedly improves my football by a lot.",
+        "event_id": 9794
+      }
     },
     {
       "id": 18,
-      "text": "SoCal cockroaches are unwelcome, crafty, and tenacious. This Eventify keeps them away.",
-      "event_id": 6430
+      "review": {
+        "text": "SoCal cockroaches are unwelcome, crafty, and tenacious. This Eventify keeps them away.",
+        "event_id": 6430
+      }
     },
     {
       "id": 19,
-      "text": "My neighbor Fannie has one of these. She works as a teacher and she says it looks spiky.",
-      "event_id": 8979
+      "review": {
+        "text": "My neighbor Fannie has one of these. She works as a teacher and she says it looks spiky.",
+        "event_id": 8979
+      }
     },
     {
       "id": 20,
-      "text": "My co-worker Atha has one of these. He says it looks narrow.",
-      "event_id": 1770
+      "review": {
+        "text": "My co-worker Atha has one of these. He says it looks narrow.",
+        "event_id": 1770
+      }
     },
     {
       "id": 21,
-      "text": "This Eventify works certainly well. It accidentally improves my baseball by a lot.",
-      "event_id": 2957
+      "review": {
+        "text": "This Eventify works certainly well. It accidentally improves my baseball by a lot.",
+        "event_id": 2957
+      }
     },
     {
       "id": 22,
-      "text": "This Eventify works very well. It harmonically improves my tennis by a lot.",
-      "event_id": 436
+      "review": {
+        "text": "This Eventify works very well. It harmonically improves my tennis by a lot.",
+        "event_id": 436
+      }
     },
     {
       "id": 23,
-      "text": "It only works when I'm Cook Islands.",
-      "event_id": 334
+      "review": {
+        "text": "It only works when I'm Cook Islands.",
+        "event_id": 334
+      }
     },
     {
       "id": 24,
-      "text": "this Eventify is gracious.",
-      "event_id": 7121
+      "review": {
+        "text": "this Eventify is gracious.",
+        "event_id": 7121
+      }
     },
     {
       "id": 25,
-      "text": "i use it hardly when i'm in my prison.",
-      "event_id": 828
+      "review": {
+        "text": "i use it hardly when i'm in my prison.",
+        "event_id": 828
+      }
     },
     {
       "id": 26,
-      "text": "this Eventify is amiable.",
-      "event_id": 9110
+      "review": {
+        "text": "this Eventify is amiable.",
+        "event_id": 9110
+      }
     },
     {
       "id": 27,
-      "text": "My Shih-Tzu loves to play with it.",
-      "event_id": 2194
+      "review": {
+        "text": "My Shih-Tzu loves to play with it.",
+        "event_id": 2194
+      }
     },
     {
       "id": 28,
-      "text": "one of my hobbies is antique-shopping. and when i'm antique-shopping this works great.",
-      "event_id": 8458
+      "review": {
+        "text": "one of my hobbies is antique-shopping. and when i'm antique-shopping this works great.",
+        "event_id": 8458
+      }
     },
     {
       "id": 29,
-      "text": "heard about this on melodic death metal radio, decided to give it a try.",
-      "event_id": 2306
+      "review": {
+        "text": "heard about this on melodic death metal radio, decided to give it a try.",
+        "event_id": 2306
+      }
     },
     {
       "id": 30,
-      "text": "I saw one of these in New Zealand and I bought one.",
-      "event_id": 5543
+      "review": {
+        "text": "I saw one of these in New Zealand and I bought one.",
+        "event_id": 5543
+      }
     },
     {
       "id": 31,
-      "text": "It only works when I'm Niger.",
-      "event_id": 6130
+      "review": {
+        "text": "It only works when I'm Niger.",
+        "event_id": 6130
+      }
     },
     {
       "id": 32,
-      "text": "I tried to nab it but got biscuit all over it.",
-      "event_id": 9569
+      "review": {
+        "text": "I tried to nab it but got biscuit all over it.",
+        "event_id": 9569
+      }
     },
     {
       "id": 33,
-      "text": "I saw one of these in Moldova and I bought one.",
-      "event_id": 1889
+      "review": {
+        "text": "I saw one of these in Moldova and I bought one.",
+        "event_id": 1889
+      }
     },
     {
       "id": 34,
-      "text": "this Eventify is perplexed.",
-      "event_id": 4061
+      "review": {
+        "text": "this Eventify is perplexed.",
+        "event_id": 4061
+      }
     },
     {
       "id": 35,
-      "text": "I saw one of these in Nauru and I bought one.",
-      "event_id": 4061
+      "review": {
+        "text": "I saw one of these in Nauru and I bought one.",
+        "event_id": 4061
+      }
     },
     {
       "id": 36,
-      "text": "The box this comes in is 4 meter by 5 foot and weights 18 kilogram.",
-      "event_id": 3902
+      "review": {
+        "text": "The box this comes in is 4 meter by 5 foot and weights 18 kilogram.",
+        "event_id": 3902
+      }
     },
     {
       "id": 37,
-      "text": "talk about shame.",
-      "event_id": 5800
+      "review": {
+        "text": "talk about shame.",
+        "event_id": 5800
+      }
     },
     {
       "id": 38,
-      "text": "The box this comes in is 5 foot by 6 inch and weights 17 pound!!!",
-      "event_id": 3829
+      "review": {
+        "text": "The box this comes in is 5 foot by 6 inch and weights 17 pound!!!",
+        "event_id": 3829
+      }
     },
     {
       "id": 39,
-      "text": "My bass loves to play with it.",
-      "event_id": 6592
+      "review": {
+        "text": "My bass loves to play with it.",
+        "event_id": 6592
+      }
     },
     {
       "id": 40,
-      "text": "one of my hobbies is antique-shopping. and when i'm antique-shopping this works great.",
-      "event_id": 7749
+      "review": {
+        "text": "one of my hobbies is antique-shopping. and when i'm antique-shopping this works great.",
+        "event_id": 7749
+      }
     },
     {
       "id": 41,
-      "text": "i use it until further notice when i'm in my nightclub.",
-      "event_id": 7787
+      "review": {
+        "text": "i use it until further notice when i'm in my nightclub.",
+        "event_id": 7787
+      }
     },
     {
       "id": 42,
-      "text": "The box this comes in is 3 light-year by 5 meter and weights 10 ounce!",
-      "event_id": 8595
+      "review": {
+        "text": "The box this comes in is 3 light-year by 5 meter and weights 10 ounce!",
+        "event_id": 8595
+      }
     },
     {
       "id": 43,
-      "text": "I tried to manhandle it but got bun all over it.",
-      "event_id": 1627
+      "review": {
+        "text": "I tried to manhandle it but got bun all over it.",
+        "event_id": 1627
+      }
     },
     {
       "id": 44,
-      "text": "My porcupine loves to play with it.",
-      "event_id": 4632
+      "review": {
+        "text": "My porcupine loves to play with it.",
+        "event_id": 4632
+      }
     },
     {
       "id": 45,
-      "text": "i use it hardly when i'm in my prison.",
-      "event_id": 1313
+      "review": {
+        "text": "i use it hardly when i'm in my prison.",
+        "event_id": 1313
+      }
     },
     {
       "id": 46,
-      "text": "I tried to decapitate it but got coconut all over it.",
-      "event_id": 3515
+      "review": {
+        "text": "I tried to decapitate it but got coconut all over it.",
+        "event_id": 3515
+      }
     },
     {
       "id": 47,
-      "text": "My tiger loves to play with it.",
-      "event_id": 3626
+      "review": {
+        "text": "My tiger loves to play with it.",
+        "event_id": 3626
+      }
     },
     {
       "id": 48,
-      "text": "one of my hobbies is antique-shopping. and when i'm antique-shopping this works great.",
-      "event_id": 1598
+      "review": {
+        "text": "one of my hobbies is antique-shopping. and when i'm antique-shopping this works great.",
+        "event_id": 1598
+      }
     },
     {
       "id": 49,
-      "text": "i use it until further notice when i'm in my station.",
-      "event_id": 836
+      "review": {
+        "text": "i use it until further notice when i'm in my station.",
+        "event_id": 836
+      }
     },
     {
       "id": 50,
-      "text": "This Eventify works really well. It wildly improves my baseball by a lot.,",
-      "event_id": 2496
+      "review": {
+        "text": "This Eventify works really well. It wildly improves my baseball by a lot.,",
+        "event_id": 2496
+      }
     }
   ],
   "events": [
@@ -753,7 +853,5 @@
       "image": "/images/wedding.jpg"
     }
   ],
-  "bookings": [
-
-  ]
+  "bookings": []
 }
