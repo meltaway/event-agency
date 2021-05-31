@@ -36,7 +36,7 @@ export default function Filters({ getSelectedDate, getRadioFilter, getChecked, g
         getRadioFilter(value);
         getSearch(search);
         setLocale(loc);
-    }, [value, selectedDate, getRadioFilter, getSelectedDate, getSearch, loc])
+    }, [search, value, selectedDate, getRadioFilter, getSelectedDate, getSearch, loc])
 
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue((event.target as HTMLInputElement).value);

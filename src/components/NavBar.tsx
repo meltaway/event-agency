@@ -15,7 +15,7 @@ const NavBar = ({getLocale}) => {
         <nav>
             <div className="title">
                 <img src="/images/icon.png" alt={"Eventify"} className="logo"/>
-                <a href="#"><h1>Eventify</h1></a>
+                <a href="#gallery"><h1>Eventify</h1></a>
             </div>
             <div className="menu">
                 <a href="#gallery">{translate[locale]["Gallery"]}</a>

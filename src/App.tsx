@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 
-import {FacebookShareButton, TelegramShareButton, TumblrShareButton, TwitterShareButton} from "react-share";
+import {FacebookShareButton, TelegramShareButton, TwitterShareButton} from "react-share";
 
 import NavBar from './components/NavBar';
 import EventCard from './components/EventCard';
@@ -143,7 +143,7 @@ function App() {
                     <div id="contacts">
                         <div className="contact-logo">
                             <img src="/images/icon.png" alt="Eventify" className="logo"/>
-                            <a href="#"><p>Eventify</p></a>
+                            <a href="#gallery"><p>Eventify</p></a>
                         </div>
                         <div className="contact-info">
                             <p>{translate[locale]["address"]}</p>
@@ -154,7 +154,7 @@ function App() {
                     </div>
                     <div className="map">
                         <p>{translate[locale]["map_explain"]}</p>
-                        <iframe
+                        <iframe title={"eventify map"}
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1270.2703579710123!2d30.46094!3d50.449655!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce82b9d930e5%3A0x8b1e1e0c5175e2f!2z0JrQn9CGINGW0LwuINC60L7RgNC_0YPRgSDihJYx!5e0!3m2!1sru!2sua!4v1620398191470!5m2!1sru!2sua"
                             width="400" height="300" style={{border: 0,}} allowFullScreen={false} loading="lazy">
                         </iframe>
